@@ -1,13 +1,14 @@
-
+import Image from "next/image";
 import { styled } from "styled-components";
+import { useRef } from "react";
 
-export default function ScrollerItem(props) {
-
-    const Link = styled.a`
+const Link = styled.a`
+        text-decoration:none;
         height:100%;
         width:100%;
     `;
-    const Container = styled.div`
+
+const Container = styled.div`
         display:flex;
         align-items:center;
         justify-content:center;
@@ -28,15 +29,17 @@ export default function ScrollerItem(props) {
         `;
 
 
-    const Title = styled.h1``;
+const Title = styled.h1``;
 
-    const P = styled.p``;
+const P = styled.p``;
 
-    const Img = styled.img`
-        width:100%;
-        position:relative;
-        top:-100%;
+const Img = styled(Image)`
+        min-width:100%;
+        min-height:100%;
+        object-fit:cover;
         `;
+
+export default function ScrollerItem(props) {
 
     return (
         <Link href={props.href}>
@@ -44,7 +47,7 @@ export default function ScrollerItem(props) {
                 <Title>{props.title}</Title>
                 <P>{props.text}</P>
             </Container>
-            <Img src={props.src} />
+            <Img src={props.src} fill={true} alt={props.title} />
         </Link>
     );
 }

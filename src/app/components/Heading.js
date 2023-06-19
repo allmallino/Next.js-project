@@ -8,22 +8,22 @@ export default function Heading(props) {
                 case '1':
                     return css`
                             font-size:2.5rem;
-                            font-weight:600;
+                            font-weight:800;
                             text-align:center;`;
                 case '2':
                     return css`
                             font-size:2rem;
-                            font-weight:500;
+                            font-weight:700;
                             text-align:center;`
                 case '3':
                     return css`
                             font-size:1.7rem;
-                            font-weight:400;
+                            font-weight:600;
                             text-align:center;`;
                 case '4':
                     return css`
                             font-size:1.5rem;
-                            font-weight:400;
+                            font-weight:500;
                             text-align:center;`
                 case '5':
                     return css`

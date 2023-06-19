@@ -3,16 +3,38 @@ import { styled } from "styled-components";
 import NavButton from "./NavButton";
 import NavLogo from "./NavLogo";
 
-export default function NavList() {
-    const Container = styled.div`
-    border-bottom: 1px solid black;
-    margin-bottom:10px;
+const Container = styled.div`
+        border-bottom: 1px solid black;
+        position:sticky;
+        z-index:999;
+        background-color:white;
+        top:0;
+        width:100%;
+        padding: 5px 0 ;
+        overflow:hidden;
     `
+const Ul = styled.ul`
+        height: 50px;
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin:0;
+        padding:0;
+    `
+
+const Li = styled.li`
+        display:flex;
+    `
+
+export default function NavList() {
+
+
     return (
         <Container>
-            <NavLogo />
-            <ul>
-                <li>
+            <Ul>
+                <Li>
+                    <NavLogo />
                     <NavButton href="/">
                         Головна
                     </NavButton>
@@ -22,16 +44,16 @@ export default function NavList() {
                     <NavButton href="/about">
                         Про нас
                     </NavButton>
-                </li>
-                <li>
+                </Li>
+                <Li>
                     <NavButton href="/register">
                         Реєстрація
                     </NavButton>
                     <NavButton href="/login">
                         Логін
                     </NavButton>
-                </li>
-            </ul>
+                </Li>
+            </Ul>
         </Container>
     );
 }
