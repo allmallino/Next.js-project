@@ -1,6 +1,6 @@
 'use client'
 import ContentCard from './ContentCard/ContentCard'
-import { useCollection } from 'react-firebase-hooks/firestore'
+import { useCollectionOnce } from 'react-firebase-hooks/firestore'
 import firebase_app from '@/firebase/config'
 import { collection, getFirestore, query, orderBy, limit } from "firebase/firestore"
 import ButtonLink from './ButtonLink'
@@ -9,7 +9,7 @@ import Heading from './Heading'
 
 export default function ToursSegment() {
 
-    const [tours, toursLoading, toursError] = useCollection(query(collection(getFirestore(firebase_app), "tours"), orderBy("buyers"), limit(3)), []);
+    const [tours, toursLoading, toursError] = useCollectionOnce(query(collection(getFirestore(firebase_app), "tours"), orderBy("buyers"), limit(3)), []);
 
 
     if (!toursLoading && tours) {

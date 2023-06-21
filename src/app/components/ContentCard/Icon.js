@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 
 export default function Icon(props) {
     const Div = styled.div`
-        display:box;
+        display:block;
         width:${props.size}px;
         height:${props.size}px;
         background-color:${props.color};

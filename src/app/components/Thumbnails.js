@@ -1,11 +1,11 @@
 'use client'
 import ImageScroller from './ImageScroller/ImageScroller'
-import { useCollection } from 'react-firebase-hooks/firestore'
+import { useCollectionOnce } from 'react-firebase-hooks/firestore'
 import firebase_app from '@/firebase/config'
 import { collection, getFirestore } from "firebase/firestore"
 import Heading from './Heading'
 export default function Thumbnails() {
-    const [thumbnails, thumbnailsLoading, thumbnailsError] = useCollection(collection(getFirestore(firebase_app), "thumbnails"), []);
+    const [thumbnails, thumbnailsLoading, thumbnailsError] = useCollectionOnce(collection(getFirestore(firebase_app), "thumbnails"), []);
 
     if (!thumbnailsLoading && thumbnails) {
         return (

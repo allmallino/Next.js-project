@@ -24,19 +24,7 @@ const Container = styled.div`
     `;
 
 
-function leftChildSelect() {
-    changeIndex(index => {
-        let oIndex = (index - 1) % props.childList.length;
-        oIndex = oIndex < 0 ? oIndex + props.childList.length : oIndex;
-        return oIndex
-    });
-}
 
-function rightChildSelect() {
-    changeIndex(index => {
-        return (index + 1) % props.childList.length;
-    });
-}
 
 
 export default function ImageScroller(props) {
@@ -79,6 +67,20 @@ export default function ImageScroller(props) {
         cursor: pointer;
         background-color:${(props) => props.active === 'true' ? 'white' : 'black'};
     `
+
+    function leftChildSelect() {
+        changeIndex(index => {
+            let oIndex = (index - 1) % props.childList.length;
+            oIndex = oIndex < 0 ? oIndex + props.childList.length : oIndex;
+            return oIndex
+        });
+    }
+
+    function rightChildSelect() {
+        changeIndex(index => {
+            return (index + 1) % props.childList.length;
+        });
+    }
 
     return (
         <Container>

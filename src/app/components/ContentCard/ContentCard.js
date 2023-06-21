@@ -5,7 +5,6 @@ import ButtonLink from "../ButtonLink";
 import Icon from "./Icon";
 
 const P = styled.p`
-        margin:0 0 0 10px;
         font-size:1rem;
     `;
 
@@ -44,6 +43,7 @@ const Grid = styled.div`
 const C = styled.div`
         display:flex;
         align-items: center;
+        gap:10px;
     `
 
 
@@ -65,7 +65,7 @@ export default function ContentCard(props) {
                 </C>
                 <C>
                     <Icon color='black' size={20} src='./icon-time.png' />
-                    <P>{props.duration} днів</P>
+                    <P>{props.duration + (props.duration === 1 ? " день" : props.duration === 2 ? " дні" : " днів")}</P>
                 </C>
                 <C>
                     <Icon color='black' size={20} src='./icon-map.png' />
