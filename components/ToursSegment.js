@@ -18,7 +18,7 @@ export default function ToursSegment() {
             <Heading variant="2">Популярні тури</Heading>
 
             <section className='list'>
-                {ourTours.map((v) => (<ContentCard key={v.key} href={"/tours/" + v.key} title={v.title} src={v.image} price={v.price} place={v.city + ", " + v.country} date={v.date} duration={v.duration} />))}
+                {ourTours.map((v) => (<ContentCard key={v.key} href={"/tours/" + v.key} title={v.title} src={v.image} price={v.price} place={v.city} date={v.date} duration={v.duration} />))}
             </section>
             <ButtonLink href="\tours">Більше</ButtonLink>
 

@@ -1,7 +1,6 @@
 "use client"
-import Heading from "../components/Heading";
-import Filters from "../components/Filters/Filters";
-import ToursTable from "../components/ToursTable/ToursTable";
+import Heading from "/components/Heading";
+import ToursTable from "/components/ToursTable/ToursTable";
 
 
 

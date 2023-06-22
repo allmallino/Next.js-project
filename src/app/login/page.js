@@ -1,5 +1,5 @@
-import Heading from "../components/Heading";
-import Map from "../components/Map";
+import Heading from "/components/Heading";
+import Map from "/components/Map";
 
 
 export default function Home() {

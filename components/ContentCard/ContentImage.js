@@ -3,6 +3,9 @@ import Link from "next/link";
 import { styled } from "styled-components";
 
 const Img = styled(Image)`
+        min-width:100%;
+        min-height:100%;
+        object-fit:cover;
         transition:0.5s;
     `
 

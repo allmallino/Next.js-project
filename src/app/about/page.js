@@ -1,5 +1,8 @@
-import Heading from "../components/Heading";
-import Map from "../components/Map";
+import dynamic from "next/dynamic";
+import Heading from "/components/Heading";
+
+const Map = dynamic(() => import('/components/Map'), { ssr: false });
+
 
 
 export default function Home() {
@@ -12,8 +15,8 @@ export default function Home() {
         І наша команда постарається зробити їх незабутніми.</p>
       <Heading variant="3">Де знайти нас</Heading>
       <Map coordinates={[{
-        latitude: '43.00',
-        longitude: '43.00'
+        _lat: '43.00',
+        _long: '43.00'
       }]} width="100%" height="400px" title="Наш офіс" />
     </div>
   )
