@@ -2,6 +2,7 @@
 import { styled } from "styled-components";
 import NavButton from "./NavButton";
 import NavLogo from "./NavLogo";
+import NavAuthButton from "./NavAuthButton";
 
 const Container = styled.div`
         border-bottom: 1px solid black;
@@ -27,6 +28,8 @@ const Li = styled.li`
         display:flex;
     `
 
+
+
 export default function NavList() {
 
 
@@ -46,12 +49,8 @@ export default function NavList() {
                     </NavButton>
                 </Li>
                 <Li>
-                    <NavButton href="/register">
-                        Реєстрація
-                    </NavButton>
-                    <NavButton href="/login">
-                        Логін
-                    </NavButton>
+
+                    <NavAuthButton />
                 </Li>
             </Ul>
         </Container>

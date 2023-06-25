@@ -3,20 +3,24 @@ import { css, styled } from "styled-components";
 
 export default function Heading(props) {
     const H = styled.p`
+        margin:0;
         ${(props => {
             switch (props.variant) {
                 case '1':
                     return css`
+                            padding: 25px 0 50px 0;
                             font-size:2.5rem;
                             font-weight:800;
                             text-align:center;`;
                 case '2':
                     return css`
+                            padding: 25px 0;
                             font-size:2rem;
                             font-weight:700;
                             text-align:center;`
                 case '3':
                     return css`
+                            padding: 15px 0;
                             font-size:1.7rem;
                             font-weight:600;
                             text-align:center;`;

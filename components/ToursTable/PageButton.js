@@ -9,15 +9,14 @@ export default function PageButton(props) {
         justify-content:center;
         align-items:center;
         cursor: pointer;
+        color:black;
+        border:1px solid black;
         ${(props => {
             switch (props.active) {
                 case 'true':
-                    return css`background-color:white;
-                               color:black;
-                               border:1px solid black;`;
+                    return css`background-color:white;`;
                 case 'false':
-                    return css`background-color:gray;
-                               color:white;`;
+                    return css`background-color:bisque;`;
             }
         })
         }

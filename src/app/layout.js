@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import NavList from '/components/NavBar/NavList'
 import ButtonToUp from '/components/ButtonToUp'
+import FooterPanel from '../../components/FooterPanel/FooterPanel'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <ButtonToUp />
+        <FooterPanel />
       </body>
     </html>
   )

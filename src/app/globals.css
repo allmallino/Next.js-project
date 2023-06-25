@@ -4,6 +4,7 @@
 
 body{
     margin-top:0;
+    margin-bottom: 0;
 }
 
 .button-up{
@@ -29,7 +30,7 @@ body{
 .container{
     min-height: 100vh;
     background-color: bisque;
-    padding:0 2.5vw;
+    padding:0 2.5vw 50px 2.5vw;
 }
 
 .list{
@@ -39,5 +40,4 @@ body{
     margin: 0 auto;
     width: 75%;
     padding: 10px 0;
-    background-color: lightgray;
 }
