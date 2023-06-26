@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Heading from "../Heading";
 import { styled } from 'styled-components';
-import LoginWithGoogleButton from "./LoginWithGoogleButton";
 
 const Input = styled.input`
         width:100%;
@@ -12,8 +11,6 @@ const Input = styled.input`
         box-sizing:border-box;
         text-align:center;
     `
-
-
 
 export default function LoginWindow(props) {
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(props.auth);
@@ -55,7 +52,6 @@ export default function LoginWindow(props) {
                 <Input ref={password} type="password" maxLength="16" minLength="6" />
             </div>
             <button onClick={login}>Увійти</button>
-            <LoginWithGoogleButton auth={props.auth} selectUser={props.selectUser} />
         </>
     )
 }

@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import Heading from "../Heading";
 
 const Container = styled.div`
     position:relative;

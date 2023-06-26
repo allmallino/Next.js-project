@@ -1,4 +1,4 @@
-import { styled } from "styled-components"
+import { css, styled } from "styled-components"
 
 
 const Input = styled.input`
@@ -7,14 +7,15 @@ const Input = styled.input`
         border-radius: 4px;
         border: 2px solid black;
         box-sizing:border-box;
-    `
+    `;
+
+const Div = styled.div`
+        ${props => css`grid-area:${props.name};`}
+    `;
 
 export default function TextInput(props) {
-    const Div = styled.div`
-        grid-area:${props.name};
-    `
     return (
-        <Div>
+        <Div name={props.name}>
             <label>{props.title}</label>
             <Input onChange={props.onChange} type={props.type} placeholder={props.placeholder} min={props.min} value={props.value} />
         </Div>

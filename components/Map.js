@@ -6,6 +6,7 @@ import { Icon } from 'leaflet';
 export default function Map(props) {
 
     let content;
+
     if (props.coordinates.length > 1) {
         content = (<>
             <Marker icon={new Icon({ iconUrl: "/marker-icon.png", iconSize: [25, 41], iconAnchor: [12, 41] })} position={[props.coordinates[0]._lat, props.coordinates[0]._long]}>
@@ -20,6 +21,7 @@ export default function Map(props) {
                 </Popup>
             </Marker>
         </>)
+
     } else {
         content = (
             <Marker icon={new Icon({ iconUrl: "/marker-icon.png", iconSize: [25, 41], iconAnchor: [12, 41] })} position={[props.coordinates[0]._lat, props.coordinates[0]._long]}>
@@ -27,7 +29,9 @@ export default function Map(props) {
                     {props.title}
                 </Popup>
             </Marker>)
+
     }
+
     return (
         <MapContainer style={{ height: props.height, width: props.width }} center={[props.coordinates[0]._lat, props.coordinates[0]._long]} zoom={13} scrollWheelZoom={true}>
             <TileLayer
@@ -37,6 +41,5 @@ export default function Map(props) {
             {content}
         </MapContainer>
     );
-
 
 }

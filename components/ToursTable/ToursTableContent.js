@@ -12,6 +12,7 @@ const Section = styled.section`
     width: 75%;
     padding: 10px 0;
   `;
+
 const PagesContainer = styled.div`
     display:flex;
     align-items:center;
@@ -22,16 +23,20 @@ const PagesContainer = styled.div`
 
 export default function ToursTableContent(props) {
     const [currentIndex, changeIndex] = useState(0);
-    if (props.tours.length > 9) {
 
+    if (props.tours.length > 9) {
         let ourTours = [];
+
         for (let i = currentIndex * 9; i < (currentIndex + 1) * 9 && i < props.tours.length; i++) {
             ourTours.push(<ContentCard key={props.tours[i].key} href={"/tours/" + props.tours[i].key} title={props.tours[i].title} src={props.tours[i].image} price={props.tours[i].price} place={props.tours[i].city} date={props.tours[i].date} duration={props.tours[i].duration} />);
         }
+
         let pages = [];
+
         for (let i = 0; i < Math.ceil(props.tours.length / 9); i++) {
             pages.push(<PageButton onClick={() => { changeIndex(i) }} num={i + 1} active={i === currentIndex ? "true" : "false"} key={i} />)
         }
+
         return (<>
             <Section>
                 {ourTours}
@@ -39,13 +44,11 @@ export default function ToursTableContent(props) {
             <PagesContainer>
                 {pages}
             </PagesContainer>
-        </>
-        );
+        </>);
     } else {
         return (
             <Section>
                 {props.tours.map((v) => (<ContentCard key={v.key} href={"/tours/" + v.key} title={v.title} src={v.image} price={v.price} place={v.city} date={v.date} duration={v.duration} />))}
             </Section>);
     }
-
 }

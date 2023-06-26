@@ -8,7 +8,6 @@ import _ from 'lodash'
 
 
 function filterTours(filters, tours) {
-
     let date = filters.date.split("-");
     console.log((date[2] + "." + date[1]))
     return _.filter(tours, (tour) => {

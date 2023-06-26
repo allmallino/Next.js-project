@@ -23,17 +23,7 @@ const Container = styled.div`
         position:relative;
     `;
 
-
-
-
-
-export default function ImageScroller(props) {
-
-    const [selectedIndex, changeIndex] = React.useState(0);
-
-
-
-    const Button = styled.img`
+const Button = styled.img`
         position:absolute;
         z-index:2;
         background-color:lightgray;
@@ -44,29 +34,34 @@ export default function ImageScroller(props) {
         padding:5px;
         cursor: pointer;
         ${(props => {
-            switch (props.variant) {
-                case 'left':
-                    return css`left:2%;
-                                transform:rotate(180deg);`;
-                case 'right':
-                    return css`right:2%;`;
-            }
-        })
+        switch (props.variant) {
+            case 'left':
+                return css`left:2%;
+                           transform:rotate(180deg);`;
+            case 'right':
+                return css`right:2%;`;
         }
+    })
+    }
 
         &:hover{
         background-color:gray;
 
         }
     `;
-    const Page = styled.div`
-        border-radius:50%;
-        height:10px;
-        width:10px;
-        margin:5px;
-        cursor: pointer;
-        background-color:${(props) => props.active === 'true' ? 'white' : 'black'};
-    `
+
+const Page = styled.div`
+    border-radius:50%;
+    height:10px;
+    width:10px;
+    margin:5px;
+    cursor: pointer;
+    background-color:${(props) => props.active === 'true' ? 'white' : 'black'};
+    `;
+
+export default function ImageScroller(props) {
+
+    const [selectedIndex, changeIndex] = React.useState(0);
 
     function leftChildSelect() {
         changeIndex(index => {

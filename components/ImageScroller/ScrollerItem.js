@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { styled } from "styled-components";
-import { useRef } from "react";
 
 const Link = styled.a`
         text-decoration:none;

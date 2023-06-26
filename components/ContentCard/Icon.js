@@ -1,22 +1,22 @@
-import { styled } from "styled-components";
+import { styled, css } from "styled-components";
 
-
-
-export default function Icon(props) {
-    const Div = styled.div`
+const Div = styled.div`
         display:block;
-        width:${props.size}px;
-        height:${props.size}px;
-        background-color:${props.color};
-        -webkit-mask-image: url(${props.src});
-        mask-image: url(${props.src});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat; 
-        -webkit-mask-size: ${props.size}px;
-        mask-size: ${props.size}px;
-    `
+        ${(props => {
+        return css`
+            width:${props.size}px;
+            height:${props.size}px;
+            background-color:${props.color};
+            -webkit-mask-image: url(${props.src});
+            mask-image: url(${props.src});
+            -webkit-mask-size: ${props.size}px;
+            mask-size: ${props.size}px;`
+    })}`;
 
+export default function Icon(props) {
     return (
-        <Div />
+        <Div size={props.size} src={props.src} color={props.color} />
     );
 }

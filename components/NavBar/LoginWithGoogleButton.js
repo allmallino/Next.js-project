@@ -4,9 +4,6 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 export default function LoginWithGoogleButton(props) {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(props.auth);
 
-    if (user) {
-        props.selectUser(user);
-    }
     if (loading) {
         return (<p>Завантаження</p>);
     }

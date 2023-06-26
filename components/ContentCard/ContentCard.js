@@ -28,23 +28,26 @@ const Card = styled.section`
             transform:scale(1.2);
             transition:0.5s;
         }
-    `
+    `;
+
 const Divider = styled.hr`
         color: gray;
         margin: -10px auto;
         width: 80%;
-    `
+    `;
+
 const Grid = styled.div`
         display:grid;
         margin: 25px 10%;
         grid-template-columns: 1fr 1fr;
         row-gap:25px;
-    `
+    `;
+
 const C = styled.div`
         display:flex;
         align-items: center;
         gap:10px;
-    `
+    `;
 
 
 export default function ContentCard(props) {

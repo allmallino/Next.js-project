@@ -5,6 +5,7 @@ const P = styled.p`
     margin:0 0 10px 0;
     padding: 15px 25px;
     text-decoration: none;
+    background-color:white;
     color: black;
     transition: all 0.5s;
     cursor: pointer;
@@ -13,16 +14,22 @@ const P = styled.p`
         background-color: gray;
         transition: all 0.5s;
     }`;
+
 const SubMenu = styled.div`
+    right:15px;
+    top:60px;
+    text-align:center;  
     background-color:white;
-    width:100%;
-    text-align:center;
-`
+    position:fixed;
+`;
+
 export default function UserInteractionWindow(props) {
     const [signOut, loading, error] = useSignOut(props.auth);
+
     if (error) {
         console.log(error.message);
     }
+
     return (
         <SubMenu>
             <P>Профіль</P>

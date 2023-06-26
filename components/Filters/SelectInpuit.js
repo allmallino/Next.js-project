@@ -1,4 +1,4 @@
-import { styled } from "styled-components"
+import { css, styled } from "styled-components"
 
 
 const Select = styled.select`
@@ -7,17 +7,18 @@ const Select = styled.select`
         border: 2px solid black;
         width:100%;
         background-color:white;
+    `;
 
-    `
+const Div = styled.div`
+        ${props => css`grid-area:${props.name};`}
+    `;
 
 export default function SelectInput(props) {
-    const Div = styled.div`
-        grid-area:${props.name};
-    `
+
     return (
-        <Div>
+        <Div name={props.name}>
             <label>{props.title}</label>
-            <Select onChange={props.onChange} type={props.type} placeholder={props.placeholder} value={props.value}>
+            <Select onChange={props.onChange} value={props.value}>
                 {props.options.map((v, i) => (<option value={i} key={i}>{v}</option>))}
             </Select>
         </Div>

@@ -15,8 +15,8 @@ export default function Home() {
         І наша команда постарається зробити їх незабутніми.</p>
       <Heading variant="3">Де знайти нас</Heading>
       <Map coordinates={[{
-        _lat: '43.00',
-        _long: '43.00'
+        _lat: '50.44810909214735',
+        _long: '30.456649405422063'
       }]} width="100%" height="400px" title="Наш офіс" />
     </div>
   )
