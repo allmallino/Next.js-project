@@ -1,7 +1,8 @@
 'use client';
-import { css, styled } from "styled-components";
+import { styled } from "styled-components";
 import ScrollerItem from "./ScrollerItem";
-import React from "react";
+import { useState } from "react";
+import ScrollerButton from "./ScrollerButton";
 
 const ListOfPages = styled.div`
         border-radius:5px;
@@ -23,32 +24,7 @@ const Container = styled.div`
         position:relative;
     `;
 
-const Button = styled.img`
-        position:absolute;
-        z-index:2;
-        background-color:lightgray;
-        border-radius:50%;
-        width:30px;
-        height:30px;
-        top:50%;
-        padding:5px;
-        cursor: pointer;
-        ${(props => {
-        switch (props.variant) {
-            case 'left':
-                return css`left:2%;
-                           transform:rotate(180deg);`;
-            case 'right':
-                return css`right:2%;`;
-        }
-    })
-    }
 
-        &:hover{
-        background-color:gray;
-
-        }
-    `;
 
 const Page = styled.div`
     border-radius:50%;
@@ -61,7 +37,7 @@ const Page = styled.div`
 
 export default function ImageScroller(props) {
 
-    const [selectedIndex, changeIndex] = React.useState(0);
+    const [selectedIndex, changeIndex] = useState(0);
 
     function leftChildSelect() {
         changeIndex(index => {
@@ -79,8 +55,8 @@ export default function ImageScroller(props) {
 
     return (
         <Container>
-            <Button variant='left' src="/icon-arrow.png" alt="left" onClick={leftChildSelect} />
-            <Button variant='right' src="/icon-arrow.png" alt="right" onClick={rightChildSelect} />
+            <ScrollerButton variant='left' onClick={leftChildSelect} />
+            <ScrollerButton variant='right' onClick={rightChildSelect} />
             <ListOfPages>
                 {props.childList.map((v, i) => (<Page active={(i === selectedIndex).toString()} key={v.key} onClick={() => { changeIndex(i) }} />))}
             </ListOfPages>

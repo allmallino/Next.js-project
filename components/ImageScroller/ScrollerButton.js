@@ -1,17 +1,34 @@
 'use client';
-import { styled } from "styled-components";
-import ScrollerItem from "./ScrollerItem";
+import { css, styled } from "styled-components";
 
-const Container = styled.div`
-        border-radius:5px;
-        overflow:hidden;
-        height:35dvw;
-    `;
+const Button = styled.img`
+    position:absolute;
+    z-index:2;
+    background-color:lightgray;
+    border-radius:50%;
+    width:30px;
+    height:30px;
+    top:50%;
+    padding:5px;
+    cursor: pointer;
+    ${(props => {
+        switch (props.variant) {
+            case 'left':
+                return css`left:2%;
+                    transform:rotate(180deg);`;
+            case 'right':
+                return css`right:2%;`;
+        }
+    })
+    }
+
+    &:hover{
+    background-color:gray;
+
+}`;
 
 export default function ScrollerButton(props) {
     return (
-        <Container>
-            {props.childList.map((c) => (<ScrollerItem key={c.key} href={c.href} src={c.src} title={c.title} text={c.text} />))}
-        </Container>
+        <Button variant={props.variant} src="/icon-arrow.png" alt={props.variant} onClick={props.onClick} />
     );
 }

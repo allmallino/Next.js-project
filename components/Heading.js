@@ -3,6 +3,7 @@ import { css, styled } from "styled-components";
 
 const H = styled.p`
         margin:0;
+        clear: both;
         ${(props => {
         switch (props.variant) {
             case '1':
