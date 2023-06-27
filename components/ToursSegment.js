@@ -9,7 +9,7 @@ import Heading from './Heading'
 
 export default function ToursSegment() {
 
-    const [tours, toursLoading, toursError] = useCollectionOnce(query(collection(getFirestore(firebase_app), "tours"), orderBy("buyers"), limit(3)), []);
+    const [tours, toursLoading, toursError] = useCollectionOnce(query(collection(getFirestore(firebase_app), "tours-thumbnails"), orderBy("buyers"), limit(3)), []);
 
 
     if (!toursLoading && tours) {

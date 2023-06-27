@@ -22,7 +22,7 @@ function filterTours(filters, tours) {
 }
 
 export default function ToursTable() {
-    const [tours, toursLoading, toursError] = useCollectionOnce(collection(getFirestore(firebase_app), "tours"), []);
+    const [tours, toursLoading, toursError] = useCollectionOnce(collection(getFirestore(firebase_app), "tours-thumbnails"), []);
 
     const [filters, changeFilter] = useState({
         name: "",
