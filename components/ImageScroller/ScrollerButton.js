@@ -14,7 +14,7 @@ const Button = styled.img`
     ${(props => {
         switch (props.variant) {
             case 'left':
-                return css`left:2%;
+                return css`left:2%; 
                     transform:rotate(180deg);`;
             case 'right':
                 return css`right:2%;`;

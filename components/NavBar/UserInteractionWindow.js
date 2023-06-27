@@ -1,10 +1,9 @@
 import { styled } from "styled-components";
 import { useSignOut } from 'react-firebase-hooks/auth';
+import Link from "next/link";
 
 const P = styled.p`
-    margin:0 0 10px 0;
     padding: 15px 25px;
-    text-decoration: none;
     background-color:white;
     color: black;
     transition: all 0.5s;
@@ -15,7 +14,23 @@ const P = styled.p`
         transition: all 0.5s;
     }`;
 
+const L = styled(Link)`
+    padding: 15px 25px;
+    text-decoration: none;
+    background-color:white;
+    color: black;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover{
+        background-color: gray;
+        transition: all 0.5s;
+    }
+`
+
 const SubMenu = styled.div`
+    display:flex;
+    flex-direction:column;
     right:15px;
     top:60px;
     text-align:center;  
@@ -32,7 +47,7 @@ export default function UserInteractionWindow(props) {
 
     return (
         <SubMenu>
-            <P>Профіль</P>
+            <L href="/profile">Профіль</L>
             <P onClick={async () => {
                 const success = await signOut();
                 if (success) {

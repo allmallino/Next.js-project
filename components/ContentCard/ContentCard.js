@@ -54,7 +54,7 @@ export default function ContentCard(props) {
 
     return (
         <Card>
-            <ContentImage alt={props.title} src={props.src} width={props.width} height={props.height} />
+            <ContentImage alt={props.title} src={props.src} width={props.width} height={props.height} variant="vertical" />
             <Heading variant="3" >{props.title}</Heading>
             <Divider />
             <Grid>

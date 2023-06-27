@@ -46,7 +46,6 @@ export default function NavList() {
                     </NavButton>
                 </Li>
                 <Li>
-
                     <NavAuthButton />
                 </Li>
             </Ul>

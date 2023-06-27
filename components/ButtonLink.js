@@ -6,6 +6,7 @@ const Button = styled.a`
     background-color:burlywood;
     text-align:center;
     padding:5px;
+    cursor: pointer;
 
     &:hover{
         color:white;
@@ -15,6 +16,6 @@ const Button = styled.a`
 export default function ButtonLink(props) {
 
     return (
-        <Button className="button-link" href={props.href}>{props.children}</Button>
+        <Button className="button-link" href={props.href} onClick={props.onClick}>{props.children}</Button>
     )
 }
