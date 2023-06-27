@@ -9,7 +9,7 @@ import _ from 'lodash'
 
 function filterTours(filters, tours) {
     let date = filters.date.split("-");
-    return _.filter(tours, (tour) => {
+    let filtered = _.filter(tours, (tour) => {
         return (
             _.toLower(tour.title).includes(_.toLower(filters.name)) &&
             tour.price >= filters.price * 500 &&
@@ -18,6 +18,18 @@ function filterTours(filters, tours) {
             (tour.date === (date[2] + "." + date[1]) || filters.date === '')
         )
     });
+    switch (filters.sorting) {
+        case "1":
+            return _.sortBy(filtered, "title");
+        case "2":
+            return _.sortBy(filtered, "buyers");
+        case "3":
+            return _.sortBy(filtered, "duration");
+        case "4":
+            return _.sortBy(filtered, "price");
+        default:
+            return filtered;
+    }
 }
 
 export default function ToursTable() {
@@ -28,7 +40,8 @@ export default function ToursTable() {
         price: 0,
         city: "",
         duration: "0",
-        date: ''
+        date: '',
+        sorting: 0
     })
 
     function setFilter(prop) {
