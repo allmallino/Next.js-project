@@ -11,6 +11,8 @@ import PageItem from '/components/ContentPage/PageItem';
 import CommentSection from '../../../../components/CommentSection/CommentSection';
 import { getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import CommentInput from '../../../../components/CommentSection/CommentInput';
+import Heading from '../../../../components/Heading';
 
 const Map = dynamic(() => import('/components/Map'), { ssr: false });
 const auth = getAuth(firebase_app);
@@ -38,7 +40,9 @@ export default function Page({ params }) {
                 <PageItem title="Дата: ">{ourTour.date}.2023</PageItem>
                 <Map coordinates={ourTour.route} width="100%" height="400px" />
                 <Button user={user} tour={tour} />
-                <CommentSection user={user} />
+                <Heading variant="2">Коментарі</Heading>
+                <CommentInput user={user} tour={params.id} comments={ourTour.comments} />
+                <CommentSection comments={ourTour.comments} />
             </>
         )
 

@@ -53,7 +53,6 @@ export default function NavAuthButton() {
 
     async function createList() {
         let state = (await getDoc(doc(getFirestore(firebase_app), "users", user.uid))).data();
-        console.log(state);
         if (typeof state === "undefined") {
             let list = [];
             await setDoc(doc(getFirestore(firebase_app), "users", user.uid), { list, });

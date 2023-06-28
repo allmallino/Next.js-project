@@ -60,7 +60,7 @@ export default function BuyButton(props) {
     if (cart) {
         if (buyingState) {
             return (
-                <Button buying='true' onClick={() => { selectProduct(props.tour); setBuyingState(false); }}>Заброньовано</Button>
+                <Button buying='true' onClick={() => { selectProduct(props.tour); setBuyingState(false); }}>Відмінити бронювання</Button>
             )
         } else {
             return (

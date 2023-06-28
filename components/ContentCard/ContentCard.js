@@ -17,7 +17,7 @@ const Card = styled.section`
         background-color:white;
         box-shadow: 2px 2px 10px black;
 
-        & .button-link{
+        & a{
             position:absolute;
             left:50%;
             transform: translate(-50%, -50%);

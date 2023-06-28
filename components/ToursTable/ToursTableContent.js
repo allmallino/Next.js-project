@@ -21,6 +21,11 @@ const PagesContainer = styled.div`
     margin:0 auto;
 `;
 
+const I = styled.i`
+    display:block;
+    text-align:center;
+`;
+
 export default function ToursTableContent(props) {
     const [currentIndex, changeIndex] = useState(0);
 
@@ -45,10 +50,13 @@ export default function ToursTableContent(props) {
                 {pages}
             </PagesContainer>
         </>);
-    } else {
+    } else if (props.tours.length >= 1) {
         return (
             <Section>
                 {props.tours.map((v) => (<ContentCard key={v.key} href={"/tours/" + v.key} title={v.title} src={v.image} price={v.price} place={v.city} date={v.date} duration={v.duration} />))}
             </Section>);
+    } else {
+        return (
+            <I>Нажаль ми не маємо турів за заданими фільтрами</I>);
     }
 }

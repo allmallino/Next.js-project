@@ -20,7 +20,7 @@ const I = styled.i`
 
 export default function ProfileInformation(props) {
     return <Container>
-        <ProfileLogo user={props.user} size="150px" />
+        <ProfileLogo nickname={props.user.email} size="150px" />
         <InfoDiv>
             <Heading variant="3">{props.user.email.substring(0, props.user.email.indexOf("@"))}</Heading>
             <I>{props.user.email}</I>

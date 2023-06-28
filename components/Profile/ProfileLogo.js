@@ -15,6 +15,6 @@ const Logo = styled.div`
 
 export default function ProfileLogo(props) {
     return <Logo size={props.size}>
-        <p>{props.user.email[0]}</p>
+        <p>{props.nickname[0]}</p>
     </Logo>
 }

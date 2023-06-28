@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
             {children}
           </main>
           <ButtonToUp />
-          <footer className='footer'>©RoundWorld 2023</footer>
+          <footer className='footer'><i>©RoundWorld 2023</i></footer>
         </body>
       </html>
     </StyledComponentsRegistry>

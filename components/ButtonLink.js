@@ -16,6 +16,6 @@ const Button = styled.a`
 export default function ButtonLink(props) {
 
     return (
-        <Button className="button-link" href={props.href} onClick={props.onClick}>{props.children}</Button>
+        <Button href={props.href} onClick={props.onClick}>{props.children}</Button>
     )
 }
