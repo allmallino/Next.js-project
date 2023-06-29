@@ -1,5 +1,7 @@
 import { css, styled } from "styled-components";
 
+//Кнока для перемикання між сторінками.
+//Має два стани: коли відкрита сторінка, яку відображає ця кнопка, і, коли відкрита інша сторінка
 const Button = styled.div`
         display:flex;
         border-radius:4px;
@@ -15,9 +17,10 @@ const Button = styled.div`
             case 'true':
                 return css`background-color:white;`;
             case 'false':
-                return css`background-color:bisque;`;
+                return css`background-color:#E5E5E5;`;
         }
-    }}`
+    }}
+`;
 
 export default function PageButton(props) {
 

@@ -4,38 +4,43 @@ import Link from "next/link";
 
 const P = styled.p`
     padding: 15px 25px;
-    background-color:white;
     color: black;
     transition: all 0.5s;
     cursor: pointer;
 
     &:hover{
-        background-color: gray;
+        background-color: #b2b2b2;
         transition: all 0.5s;
-    }`;
+    }
+`;
 
 const L = styled(Link)`
     padding: 15px 25px;
     text-decoration: none;
-    background-color:white;
     color: black;
     transition: all 0.5s;
     cursor: pointer;
 
     &:hover{
-        background-color: gray;
+        background-color: #b2b2b2;
         transition: all 0.5s;
     }
-`
+`;
 
+//Випадаюче вікно
 const SubMenu = styled.div`
     display:flex;
     flex-direction:column;
-    right:15px;
+    right:1vw;
     top:60px;
     text-align:center;  
-    background-color:white;
+    background-color:#E5E5E5;
     position:fixed;
+    z-index: 999;
+
+    @media screen and (max-width:768px) {
+        top:50px;
+    }
 `;
 
 export default function UserInteractionWindow(props) {
@@ -49,6 +54,7 @@ export default function UserInteractionWindow(props) {
         <SubMenu>
             <L href="/profile">Профіль</L>
             <P onClick={async () => {
+                //Вихід з акаунту користувача
                 const success = await signOut();
                 if (success) {
                     props.selectUser("");

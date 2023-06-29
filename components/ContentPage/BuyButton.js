@@ -2,7 +2,7 @@ import firebase_app from "@/firebase/config";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useDocument } from "react-firebase-hooks/firestore";
-import { css, styled } from "styled-components";
+import { styled } from "styled-components";
 
 const Button = styled.a`
     text-decoration:none;
@@ -13,30 +13,19 @@ const Button = styled.a`
     justify-content: center;
     margin: 10px auto;
     cursor: pointer;
-    ${(props => {
-        switch (props.buying) {
-            case 'true':
-                return css`
-                    color: black;
-                    background-color: argb(0,0,0,0);
-                    border:1px solid black;`;
-            case 'false':
-                return css`
-                    color: white;
-                    background-color: burlywood;
-                    border:1px solid burlywood;`;
-        }
-    })
-    }
+    color: black;
+    border-radius:5px;
+    background-color: #FCA311;
     &:hover{
         color: white;
-        background-color: brown;
+        background-color: #14213D;
     }`;
 
 export default function BuyButton(props) {
     const [buyingState, setBuyingState] = useState(false);
     const [cart, cartLoading, cartError] = useDocument(doc(getFirestore(firebase_app), "users", props.user.uid), []);
 
+    //На початку нам потрібно дізнатися, чи користувач вже оорендував цей тур
     useEffect(() => {
         if (cart) {
             if (cart.data().list.includes(props.tour)) {
@@ -45,6 +34,8 @@ export default function BuyButton(props) {
         }
     }, [cart, setBuyingState, props.tour]);
 
+    //Змінюємо статус оренди користувача на протилежний.
+    //Якщо вже орендував до цього - то відміняємо бронь, якщо ні - то бронюємо. 
     async function selectProduct(product) {
         let l = cart.data().list;
         let list;
@@ -54,17 +45,16 @@ export default function BuyButton(props) {
             list = [...l, product];
         }
         await setDoc(doc(getFirestore(firebase_app), "users", props.user.uid), { list, });
-
     }
 
     if (cart) {
         if (buyingState) {
             return (
-                <Button buying='true' onClick={() => { selectProduct(props.tour); setBuyingState(false); }}>Відмінити бронювання</Button>
+                <Button onClick={() => { selectProduct(props.tour); setBuyingState(false); }}>Відмінити бронювання</Button>
             )
         } else {
             return (
-                <Button buying='false' onClick={() => { selectProduct(props.tour); setBuyingState(true); }}>Забронювати</Button>
+                <Button onClick={() => { selectProduct(props.tour); setBuyingState(true); }}>Забронювати</Button>
             )
         }
     }

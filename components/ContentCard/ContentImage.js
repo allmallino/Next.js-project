@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { css, styled } from "styled-components";
 
+//Картинка в карточці
 const Img = styled(Image)`
         min-width:100%;
         min-height:100%;
@@ -8,6 +9,8 @@ const Img = styled(Image)`
         transition:0.5s;
     `;
 
+//Контейнер, в якому буде лежати картинка, при наведенні на нього, ця картинка буде розширюватися.
+//Він може бути як і в вертикальній карточці, так і в горизонтальній
 const Container = styled.div`
         position:relative;
         overflow: hidden;
@@ -25,8 +28,6 @@ const Container = styled.div`
         }
     }
     }
-        
-
 `;
 
 export default function ContentImage(props) {

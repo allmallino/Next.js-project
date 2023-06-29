@@ -1,7 +1,7 @@
 "use client"
 import { MapContainer, TileLayer, Polyline, Popup, Marker } from 'react-leaflet';
-require('leaflet/dist/leaflet.css');
 import { Icon } from 'leaflet';
+require('leaflet/dist/leaflet.css');
 
 export default function Map(props) {
 
@@ -32,14 +32,12 @@ export default function Map(props) {
 
     }
 
-    return (
-        <MapContainer style={{ height: props.height, width: props.width }} center={[props.coordinates[0]._lat, props.coordinates[0]._long]} zoom={13} scrollWheelZoom={true}>
-            <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {content}
-        </MapContainer>
-    );
+    return <MapContainer style={{ height: props.height, width: props.width }} center={[props.coordinates[0]._lat, props.coordinates[0]._long]} zoom={20} minZoom={15} scrollWheelZoom={true}>
+        <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {content}
+    </MapContainer>;
 
 }

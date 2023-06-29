@@ -9,26 +9,36 @@ const C = styled.section`
     display:flex;
     align-items:center;
     padding:10px;
-    justify-content:space-between;
+    justify-content:space-around;
+    gap:10px;
+`;
 
-`
 const Area = styled.textarea`
-    resize:vertical;
+    resize:none;
     width: 90%;
     font-size:1rem;
-`
+    
+    @media screen and (max-width:1400px) {
+        resize:vertical;
+        max-height:80px;
+    }
+`;
+
 export default function CommentInput(props) {
     const textRef = useRef(0);
     if (props.user) {
         return <C>
-            <Area placeholder="Текст коментаря" ref={textRef} />
+            <Area maxLength={250} placeholder="Текст коментаря" ref={textRef} />
             <ButtonLink onClick={async () => {
-                if (textRef.current.value != "") {
+                //Додає новий коментар в масив коментарів
+                if (textRef.current.value.length >= 4) {
                     let text = textRef.current.value;
                     textRef.current.value = "";
-                    await updateDoc(doc(getFirestore(firebase_app), "tours", props.tour), { comments: [...props.comments, { text: text, nickname: props.user.email.substring(0, props.user.email.indexOf("@")) }] })
+                    await updateDoc(doc(getFirestore(firebase_app), "tours", props.tour), { comments: [{ text: text, date: (new Date(Date.now())).toLocaleDateString(), nickname: props.user.email.substring(0, props.user.email.indexOf("@")) }, ...props.comments] })
+                } else {
+                    alert("Вибачте, але користувачі можуть залишати коментарі мінімальною довжиною 4 символи")
                 }
             }}>Коментувати</ButtonLink>
-        </C>
+        </C >
     }
 }

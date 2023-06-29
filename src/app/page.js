@@ -3,10 +3,8 @@ import ToursSegment from '/components/ToursSegment'
 
 
 export default function Home() {
-  return (
-    <>
-      <Thumbnails />
-      <ToursSegment />
-    </>
-  )
+  return <>
+    <Thumbnails />
+    <ToursSegment />
+  </>
 }

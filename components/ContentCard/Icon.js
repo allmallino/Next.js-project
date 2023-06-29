@@ -1,5 +1,6 @@
 import { styled, css } from "styled-components";
 
+//Сама іконка, який ми можемо задати колір, розмір і картинку
 const Div = styled.div`
         display:block;
         -webkit-mask-repeat: no-repeat;

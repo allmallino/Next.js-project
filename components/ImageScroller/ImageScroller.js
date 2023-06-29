@@ -4,28 +4,33 @@ import ScrollerItem from "./ScrollerItem";
 import { useState } from "react";
 import ScrollerButton from "./ScrollerButton";
 
+//Контейнер для точок, які будуть відображати відповідну сторінку в нашому скроллері
 const ListOfPages = styled.div`
-        border-radius:5px;
-        background-color:rgba(211, 211, 211, 0.35);
-        position:absolute;
-        z-index:2;
-        bottom:2%;
-        left:50%;
-        transform: translate(-50%, -50%);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    `;
+    border-radius:5px;
+    background-color:rgba(229, 229, 229, 0.35);
+    position:absolute;
+    z-index:2;
+    bottom:2%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+`;
 
+//Контейнер в якому буде знаходитися сам скроллер
 const Container = styled.div`
-        border-radius:5px;
-        overflow:hidden;
-        height:35dvw;
-        position:relative;
-    `;
+    border-radius:5px;
+    overflow:hidden;
+    height:35dvw;
+    position:relative;
 
+    @media screen and (max-width:768px) {
+        height:65dvw;
+    }
+`;
 
-
+//Точка, яка відображає сторінку в скроллері
 const Page = styled.div`
     border-radius:50%;
     height:10px;
@@ -33,12 +38,17 @@ const Page = styled.div`
     margin:5px;
     cursor: pointer;
     background-color:${(props) => props.active === 'true' ? 'white' : 'black'};
-    `;
+
+    @media screen and (max-width:768px) {
+        height:5px;
+        width:5px;
+    }
+`;
 
 export default function ImageScroller(props) {
-
     const [selectedIndex, changeIndex] = useState(0);
 
+    //Перемикаємо на ліве зображення
     function leftChildSelect() {
         changeIndex(index => {
             let oIndex = (index - 1) % props.childList.length;
@@ -47,6 +57,7 @@ export default function ImageScroller(props) {
         });
     }
 
+    //Перемикаємо на праве зображення
     function rightChildSelect() {
         changeIndex(index => {
             return (index + 1) % props.childList.length;

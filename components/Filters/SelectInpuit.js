@@ -7,6 +7,7 @@ const Select = styled.select`
         border: 2px solid black;
         width:100%;
         background-color:white;
+        font-size:1rem;
     `;
 
 const Div = styled.div`

@@ -11,19 +11,13 @@ export default function Home() {
     const [user, userLoading, error] = useAuthState(auth);
 
     if (user) {
-        return (
-            <>
-                <ProfileInformation user={user} auth={auth} />
-                <CartList user={user} />
-            </>
-        );
+        return <>
+            <ProfileInformation user={user} auth={auth} />
+            <CartList user={user} />
+        </>
     }
     else if (!userLoading) {
-        return (
-            <div>
-                <Heading variant="1">Будь-ласка, залогінтеся, щоб подивитися інформацію про акаунт</Heading>
-            </div>
-        );
+        return <Heading variant="1">Будь-ласка, залогінтеся, щоб подивитися інформацію про акаунт</Heading>
     }
 
 }

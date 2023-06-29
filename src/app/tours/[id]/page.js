@@ -17,34 +17,34 @@ import Heading from '../../../../components/Heading';
 const Map = dynamic(() => import('/components/Map'), { ssr: false });
 const auth = getAuth(firebase_app);
 
+const Button = (p) => {
+    if (p.user)
+        return (<BuyButton user={p.user} tour={p.id} />);
+    else
+        return <></>
+}
+
 export default function Page({ params }) {
     const [tour, tourLoading, tourError] = useDocument(doc(getFirestore(firebase_app), "tours", params.id), []);
     const [user, userLoading, error] = useAuthState(auth);
 
-    const Button = (p) => {
-        if (user)
-            return (<BuyButton user={p.user} tour={params.id} />);
-        else
-            return (<></>)
-    }
+
 
     if (!tourLoading && tour && !userLoading) {
         let ourTour = tour.data();
-        return (
-            <>
-                <BackgroundImage src={ourTour.image} alt={ourTour.title} />
-                <ContentTitle location={ourTour.city + ", " + ourTour.country}>{ourTour.title}</ContentTitle>
-                <ContentText>{ourTour.text}</ContentText>
-                <PageItem title="Ціна: ">{ourTour.price}+ грн</PageItem>
-                <PageItem title="Тривалість: ">{ourTour.duration} днів</PageItem>
-                <PageItem title="Дата: ">{ourTour.date}.2023</PageItem>
-                <Map coordinates={ourTour.route} width="100%" height="400px" />
-                <Button user={user} tour={tour} />
-                <Heading variant="2">Коментарі</Heading>
-                <CommentInput user={user} tour={params.id} comments={ourTour.comments} />
-                <CommentSection comments={ourTour.comments} />
-            </>
-        )
+        return <>
+            <BackgroundImage src={ourTour.image} alt={ourTour.title} />
+            <ContentTitle location={ourTour.city + ", " + ourTour.country}>{ourTour.title}</ContentTitle>
+            <ContentText>{ourTour.text}</ContentText>
+            <PageItem title="Ціна: ">{ourTour.price}+ грн</PageItem>
+            <PageItem title="Тривалість: ">{ourTour.duration} днів</PageItem>
+            <PageItem title="Дата: ">{ourTour.date}.2023</PageItem>
+            <Map coordinates={ourTour.route} width="100%" height="400px" />
+            <Button user={user} id={params.id} />
+            <Heading variant="2">Коментарі</Heading>
+            <CommentInput user={user} tour={params.id} comments={ourTour.comments} />
+            <CommentSection comments={ourTour.comments} />
+        </>
 
     }
 }

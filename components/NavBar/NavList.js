@@ -1,40 +1,46 @@
 'use client'
 import { styled } from "styled-components";
 import NavButton from "./NavButton";
-import NavLogo from "./NavLogo";
 import NavAuthButton from "./NavAuthButton";
 
+//Верхня панель
 const Container = styled.div`
-        border-bottom: 1px solid black;
-        position:sticky;
-        z-index:999999;
-        background-color:white;
-        top:0;
-        width:100%;
-        padding: 5px 0 ;
-        overflow:hidden;
-    `;
+    border-bottom: 1px solid black;
+    position:sticky;
+    z-index:999999;
+    background-color:#E5E5E5;
+    top:0;
+    width:100%;
+    box-sizing:border-box;
+    padding: 5px 5px;
+    overflow:hidden;
 
+    @media screen and (max-width:768px) {
+        padding:0 5px;
+    }
+`;
+
+//Список, де будуть зберігатися наші кнопки
 const Ul = styled.ul`
-        height: 50px;
-        list-style-type: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin:0;
-        padding:0;
-    `;
+    height: 50px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin:0;
+    padding:0;
+`;
 
+//Стилізація двох основних регіонів, регіон взаємодії з даними користувача і регіон переходу по розділам сайту
 const Li = styled.li`
-        display:flex;
-    `;
+    display:flex;
+`;
 
 export default function NavList() {
     return (
         <Container>
             <Ul>
                 <Li>
-                    <NavLogo />
                     <NavButton href="/">
                         Головна
                     </NavButton>

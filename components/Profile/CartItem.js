@@ -6,13 +6,16 @@ import Heading from "../Heading"
 import Link from "next/link"
 import firebase_app from "@/firebase/config";
 
+//Горизонтальна карточка
 const Card = styled(Link)`
-    height:100px;
+    height:200px;
     background-color:white;
     color:black;
     text-decoration:none;
     display:grid;
     grid-template-columns: 1fr 2fr;
+    gap:5px;
+    padding-right:5px;
     align-items:center;
     box-shadow: 2px 2px 10px black;
     border:1px solid black;
@@ -20,10 +23,14 @@ const Card = styled(Link)`
     overflow:hidden;
     cursor: pointer;
 
-    &:hover img{
+    &:hover img {
             transform:scale(1.2);
             transition:0.5s;
-        }
+    }
+
+    @media screen and (max-width:768px) {
+        height:100px;
+    }
 `;
 
 export default function CartItem(props) {

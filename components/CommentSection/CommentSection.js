@@ -4,7 +4,7 @@ import Comment from "./Comment"
 const Container = styled.div`
     width:100%;
     background-color:white;
-    padding:10px;
+    padding:10px 0;
 `
 const I = styled.i`
     display:block;
@@ -13,7 +13,8 @@ const I = styled.i`
 export default function CommentSection(props) {
     if (props.comments.length >= 1) {
         return <Container>
-            {props.comments.map((v, i) => (<Comment nickname={v.nickname} text={v.text} key={i} />))}
+            {/* Створює коментарі з завантаженої інформації*/}
+            {props.comments.map((v, i) => (<Comment nickname={v.nickname} text={v.text} date={v.date} key={i} />))}
         </Container>
     } else {
         return <Container>

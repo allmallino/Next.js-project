@@ -14,11 +14,19 @@ const Gallery = styled.div`
     width:300px;
     height:300px;
     border-radius:5px;
-    background-color:lightgray;
+    background-color:#E5E5E5;
     margin-right:25px;
     margin-bottom:25px;
     overflow:hidden;
-`
+
+    @media screen and (max-width:768px) {
+        float:none;
+        margin:-25px auto 0 auto;
+}
+`;
+
+//Контейнер, який містить управління галереєю.
+//Він прихований, і лише при наведенні на галерею він показується користувачу
 const Cont = styled.div`
     width:100%;
     position:absolute;
@@ -32,17 +40,21 @@ const Cont = styled.div`
         opacity:1;
         transition:0.5s ease all;
     }
-`
+`;
 
+//Картинка, що буде в галереї
 const Img = styled(Image)`
-        min-width:100%;
-        min-height:100%;
-        object-fit:cover;
-        `;
+    min-width:100%;
+    min-height:100%;
+    object-fit:cover;
+`;
+
+
 export default function ImageGallery() {
     const [selectedIndex, changeIndex] = useState(0);
     const [images, imagesLoading, imagessError] = useCollectionOnce(collection(getFirestore(firebase_app), "gallery"), []);
 
+    //Перемикаємо на ліве зображення
     function leftChildSelect() {
         changeIndex(index => {
             let oIndex = (index - 1) % images.docs.length;
@@ -51,6 +63,7 @@ export default function ImageGallery() {
         });
     }
 
+    //Перемикаємо на праве зображення
     function rightChildSelect() {
         changeIndex(index => {
             return (index + 1) % images.docs.length;

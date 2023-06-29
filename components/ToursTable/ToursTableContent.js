@@ -3,24 +3,41 @@ import { styled } from "styled-components";
 import PageButton from "./PageButton";
 import ContentCard from "../ContentCard/ContentCard";
 
+//Таблиця в якій будуть знаходитися всі наші карточки з турами
 const Section = styled.section`
     display: grid;
-    grid-template-columns:auto auto auto;
-    justify-content:space-around;
-    grid-gap:25px; 
+    grid-template-columns:1fr 1fr 1fr;
+    place-items: center;
+    gap:25px; 
     margin: 10px auto;
     width: 75%;
-    padding: 10px 0;
-  `;
 
+    @media screen and (max-width:1200px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width:768px) {
+        width: 100%;
+        gap:10px;
+        grid-template-columns:1fr 1fr;
+    }
+    @media screen and (max-width:500px) {
+            width: 100%;
+            gap:10px;
+            grid-template-columns:1fr;
+    }
+`;
+
+//Контейнер в якому будуть знаходитися кнопки перемикання сторінок
 const PagesContainer = styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
     gap:5px;
-    margin:0 auto;
+    margin:15px auto 0 auto;
 `;
 
+//Стилізація повідомлення про помилку
 const I = styled.i`
     display:block;
     text-align:center;
@@ -29,6 +46,7 @@ const I = styled.i`
 export default function ToursTableContent(props) {
     const [currentIndex, changeIndex] = useState(0);
 
+    //Якщо ми маємо більше ніж 9 турів, то ми розділяємо їх по сторінкам
     if (props.tours.length > 9) {
         let ourTours = [];
 
@@ -42,21 +60,19 @@ export default function ToursTableContent(props) {
             pages.push(<PageButton onClick={() => { changeIndex(i) }} num={i + 1} active={i === currentIndex ? "true" : "false"} key={i} />)
         }
 
-        return (<>
+        return <>
             <Section>
                 {ourTours}
             </Section>
             <PagesContainer>
                 {pages}
             </PagesContainer>
-        </>);
+        </>;
     } else if (props.tours.length >= 1) {
-        return (
-            <Section>
-                {props.tours.map((v) => (<ContentCard key={v.key} href={"/tours/" + v.key} title={v.title} src={v.image} price={v.price} place={v.city} date={v.date} duration={v.duration} />))}
-            </Section>);
+        return <Section>
+            {props.tours.map((v) => (<ContentCard key={v.key} href={"/tours/" + v.key} title={v.title} src={v.image} price={v.price} place={v.city} date={v.date} duration={v.duration} />))}
+        </Section>;
     } else {
-        return (
-            <I>Нажаль ми не маємо турів за заданими фільтрами</I>);
+        return <I>Нажаль ми не маємо турів за заданими фільтрами</I>;
     }
 }

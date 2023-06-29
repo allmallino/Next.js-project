@@ -7,6 +7,8 @@ const Input = styled.input`
         border-radius: 4px;
         border: 2px solid black;
         box-sizing:border-box;
+        font-size:1rem;
+        padding-left:5px;
     `;
 
 const Div = styled.div`
@@ -17,7 +19,7 @@ export default function TextInput(props) {
     return (
         <Div name={props.name}>
             <label>{props.title}</label>
-            <Input onChange={props.onChange} type={props.type} placeholder={props.placeholder} min={props.min} value={props.value} />
+            <Input onChange={props.onChange} type={props.type} placeholder={props.placeholder} min={props.min} max={props.max} value={props.value} />
         </Div>
     )
 }

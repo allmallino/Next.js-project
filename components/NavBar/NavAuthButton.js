@@ -10,6 +10,7 @@ import UserInteractionWindow from "./UserInteractionWindow";
 import LoginWithGoogleButton from "./LoginWithGoogleButton";
 import { doc, getFirestore, setDoc, getDoc } from "firebase/firestore";
 
+//Текст, що відтворюватиме дію при натисканні
 const P = styled.p`
     padding: 15px 25px;
     border-left: 1px solid black;
@@ -19,27 +20,45 @@ const P = styled.p`
     cursor: pointer;
 
     &:hover{
-        background-color: gray;
+        background-color: #b2b2b2;
         transition: all 0.5s;
-    }`;
+    }
+    
+    @media screen and (max-width:768px) {
+        padding: 15px 15px;
+    }
+`;
+
+//Контейнер, в якому буде знаходитися інтерфейс авторизації
 const Container = styled.div`
     width:15vw;
     height:50vh;
-    background-color:lightgray;
+    background-color:#E5E5E5;
     text-align:center;
     border-radius:5px;
     display:grid;
+    position:relative;
     padding:25px 15px;
     row-gap:25px;
+    box-shadow: 5px 5px 15px black;
+
+    @media screen and (max-width:1400px) {
+        width:25vw
+    }
+
+    @media screen and (max-width:768px) {
+        width:45vw
+    }
 `;
+
+//Текст при натисканні на який, користувач змінює режим (з авторизації на логін, і навпаки)
 const Link = styled.p`
     margin-top:0;
-    color:blue;
+    color:#14213D;
     cursor: pointer;
 
-
     &:hover{
-        color:brown;
+        color:#FCA311;
     }
 `;
 
@@ -51,6 +70,7 @@ export default function NavAuthButton() {
     const [loginState, setState] = useState(true);
     const [user, setUser] = useState("");
 
+    //Створюємо лист замовлень, в який ми будемо додавати нові тури, які забронював користувач
     async function createList() {
         let state = (await getDoc(doc(getFirestore(firebase_app), "users", user.uid))).data();
         if (typeof state === "undefined") {
@@ -59,6 +79,7 @@ export default function NavAuthButton() {
         }
     }
 
+    //Зміна стану авторизації на стан реєстрації, і навпаки
     function changeState() {
         setState((s) => { return !s; });
     }
@@ -71,22 +92,32 @@ export default function NavAuthButton() {
         setUser(previousUser);
     }
 
+    //Якщо користувач вже до цього не авторизовувався, ми показуємо кнопку Увійти, де він може або авторизуватися, або створити новий акаунт
     if (!user) {
         let content;
 
         if (loginState) {
-            content = (<LoginWindow selectUser={setUser} auth={auth} />)
+            //Стан авторизації
+            content = (<LoginWindow selectUser={setUser} auth={auth}>
+                <Link onClick={changeState}>{loginState ? "Не маєте аккаунту?" : "Вже маєте аккаунт?"}</Link>
+                <LoginWithGoogleButton auth={auth} selectUser={setUser} />
+            </LoginWindow>)
         } else {
-            content = (<RegisterWindow selectUser={setUser} auth={auth} />)
+            //Стан реєстрації
+            content = (<RegisterWindow selectUser={setUser} auth={auth}>
+                <Link onClick={changeState}>{loginState ? "Не маєте аккаунту?" : "Вже маєте аккаунт?"}</Link>
+                <LoginWithGoogleButton auth={auth} selectUser={setUser} />
+            </RegisterWindow>)
         }
+
         return (<Popup trigger={<P>Увійти</P>} modal>
             <Container>
                 {content}
-                <Link onClick={changeState}>{loginState ? "Не маєте аккаунту?" : "Вже маєте аккаунт?"}</Link>
-                <LoginWithGoogleButton auth={auth} selectUser={setUser} />
             </Container>
         </Popup>)
+
     } else {
+        //Якщо ми змогли підтягнути дані користувача, ми його авторизуємо і даємо можливість подивитися його профіль, або вийти з акаунту
         createList();
         return (
             <Popup trigger={<P>{user.email.substring(0, user.email.indexOf("@"))}</P>} position="bottom" on="hover" closeOnDocumentClick mouseLeaveDelay={300} mouseEnterDelay={0} arrow={false}>

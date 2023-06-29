@@ -4,29 +4,30 @@ import { collection, getFirestore } from "firebase/firestore"
 import { useState } from "react"
 import Filters from "../Filters/Filters"
 import ToursTableContent from "./ToursTableContent"
-import _ from 'lodash'
+import { filter, toLower, sortBy } from 'lodash'
 
-
+//Фільтруємо і сортуємо тури за заданою користувачем інформацією
 function filterTours(filters, tours) {
     let date = filters.date.split("-");
-    let filtered = _.filter(tours, (tour) => {
+    let filtered = filter(tours, (tour) => {
         return (
-            _.toLower(tour.title).includes(_.toLower(filters.name)) &&
+            toLower(tour.title).includes(toLower(filters.name)) &&
             tour.price >= filters.price * 500 &&
-            _.toLower(tour.city).includes(_.toLower(filters.city)) &&
+            toLower(tour.city).includes(toLower(filters.city)) &&
             (tour.duration + "" === filters.duration || filters.duration === "0") &&
             (tour.date === (date[2] + "." + date[1]) || filters.date === '')
         )
     });
+
     switch (filters.sorting) {
         case "1":
-            return _.sortBy(filtered, "title");
+            return sortBy(filtered, "title");
         case "2":
-            return _.sortBy(filtered, "buyers");
+            return sortBy(filtered, "buyers");
         case "3":
-            return _.sortBy(filtered, "duration");
+            return sortBy(filtered, "duration");
         case "4":
-            return _.sortBy(filtered, "price");
+            return sortBy(filtered, "price");
         default:
             return filtered;
     }
@@ -44,6 +45,7 @@ export default function ToursTable() {
         sorting: 0
     })
 
+    //Функція, що повертає функцію, яка змінює задане поле в об'єкту filters
     function setFilter(prop) {
         return (e) => {
             changeFilter((v) => {

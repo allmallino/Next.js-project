@@ -4,19 +4,29 @@ import Heading from "../Heading"
 
 const Container = styled.div`
     display:grid;
-    grid-template-columns: auto auto;
-    background-color:lightgray;
+    grid-template-columns: auto 2fr;
+    background-color:#E5E5E5;
     padding:25px;
-`
+    box-sizing:border-box;
+    margin:10px auto;
+    width:75%;
+    border-radius:5px;
+    
+    @media screen and (max-width:768px) {
+        width:100%;
+    }
+`;
 
 const InfoDiv = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:space-around;
-`
+    padding:25px 0;
+`;
+
 const I = styled.i`
     text-align:center;
-`
+`;
 
 export default function ProfileInformation(props) {
     return <Container>

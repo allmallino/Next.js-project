@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 
+//Контейнер, в якому буде знаходитися назва туру
 const Container = styled.div`
     position:relative;
     display:block;
@@ -9,12 +10,13 @@ const Container = styled.div`
     width:max-content;
     border-radius:5px;
     text-align:center;
-    background-color:lightgray;
+    background-color:#E5E5E5;
     color:black;
     font-size:1.5rem;
     font-weight:600;
 `
 
+//Розташування туру, яке буде знаходитися під назвою
 const Locate = styled.i`
     display:block;
     text-align:center;
