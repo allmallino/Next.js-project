@@ -38,6 +38,7 @@ const Container = styled.div`
     border-radius:5px;
     display:grid;
     position:relative;
+    grid-template-rows: 1.5fr 1fr 1fr 0.8fr 1fr 0.8fr;
     padding:25px 15px;
     row-gap:25px;
     box-shadow: 5px 5px 15px black;
