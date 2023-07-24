@@ -32,16 +32,23 @@ const P = styled.p`
 //Контейнер, в якому буде знаходитися інтерфейс авторизації
 const Container = styled.div`
     width:15vw;
-    height:50vh;
+    height:450px;
     background-color:#E5E5E5;
     text-align:center;
     border-radius:5px;
     display:grid;
     position:relative;
-    grid-template-rows: 1.5fr 1fr 1fr 0.8fr 1fr 0.8fr;
-    padding:25px 15px;
+    grid-template-rows: 1.5fr 1fr 1fr 0.8fr 0.5fr 0.8fr;
+    padding:20px 15px;
     row-gap:25px;
     box-shadow: 5px 5px 15px black;
+
+    @media screen and (max-height:500px) {
+        height:345px;
+        max-height:90vh;
+        margin-top:55px;
+        row-gap:15px;
+    }
 
     @media screen and (max-width:1400px) {
         width:25vw

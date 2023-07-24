@@ -8,7 +8,7 @@ import firebase_app from "@/firebase/config";
 
 //Горизонтальна карточка
 const Card = styled(Link)`
-    height:200px;
+    height:150px;
     background-color:white;
     color:black;
     text-decoration:none;

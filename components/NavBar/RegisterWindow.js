@@ -60,15 +60,15 @@ export default function RegisterWindow(props) {
     if (error) {
         switch (error.code) {
             case "auth/email-already-in-use":
-                if (registerState.message !== "Пошта вже зайнята")
+                if (registerState.emailMessage !== "Пошта вже зайнята")
                     changeState({ email: true, password: false, emailMessage: "Пошта вже зайнята", passwordMessage: "" });
                 break;
             case "auth/invalid-email":
-                if (registerState.message !== "Ви ввели не правильну пошту")
+                if (registerState.emailMessage !== "Ви ввели не правильну пошту")
                     changeState({ email: true, password: false, emailMessage: "Ви ввели не правильну пошту", passwordMessage: "" });
                 break;
             case "auth/weak-password":
-                if (registerState.message !== "Пароль повинен бути від 6 до 16")
+                if (registerState.passwordMessage !== "Пароль повинен бути від 6 до 16")
                     changeState({ email: false, password: true, emailMessage: "", passwordMessage: "Пароль повинен бути від 6 до 16" });
                 break;
         }

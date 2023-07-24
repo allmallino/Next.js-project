@@ -63,11 +63,11 @@ export default function LoginWindow(props) {
     if (error) {
         switch (error.code) {
             case "auth/user-not-found":
-                if (loginState.message !== "Користувача з такою поштою не існує")
+                if (loginState.emailMessage !== "Користувача з такою поштою не існує")
                     changeState({ email: true, password: false, emailMessage: "Користувача з такою поштою не існує", passwordMessage: "" });
                 break;
             case "auth/wrong-password":
-                if (loginState.message !== "Ви ввели не правильний пароль")
+                if (loginState.passwordMessage !== "Ви ввели не правильний пароль")
                     changeState({ email: false, password: true, emailMessage: "", passwordMessage: "Ви ввели не правильний пароль" });
                 break;
         }

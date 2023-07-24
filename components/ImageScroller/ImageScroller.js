@@ -22,7 +22,8 @@ const ListOfPages = styled.div`
 const Container = styled.div`
     border-radius:5px;
     overflow:hidden;
-    height:35dvw;
+    height:35dvh;
+    min-height:500px;
     position:relative;
 
     @media screen and (max-width:768px) {

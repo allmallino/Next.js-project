@@ -8,7 +8,7 @@ import Icon from "./Icon";
 const Card = styled.section`
         position:relative;
         width:20vw;
-        height:65vh;
+        height:600px;
         border-radius:5px;
         overflow:hidden;
         background-color:white;
@@ -32,12 +32,12 @@ const Card = styled.section`
 
         @media screen and (max-width:768px) {
             width:45vw;
-            height:55vh;
+            height:510px;
         }
 
         @media screen and (max-width:500px) {
             width:75vw;
-            height:55vh;
+            height:510px;
         }
     `;
 
