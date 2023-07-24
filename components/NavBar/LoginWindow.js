@@ -36,12 +36,19 @@ export default function LoginWindow(props) {
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(props.auth);
     const email = useRef(0);
     const password = useRef(0);
-    const [loginState, changeState] = useState({ email: false, password: false, message: "" });
+    const [loginState, changeState] = useState({ email: false, password: false, emailMessage: "", passwordMessage: "" });
 
     //Аторизація користувача
     function login() {
         if (email.current.value && password.current.value) {
             signInWithEmailAndPassword(email.current.value, password.current.value);
+        } else {
+            changeState({
+                email: !email.current.value,
+                password: !password.current.value,
+                emailMessage: !email.current.value ? "Введіть пошту, будь ласка" : "",
+                passwordMessage: !password.current.value ? "Введіть пароль, будь ласка" : ""
+            });
         }
     }
 
@@ -57,11 +64,11 @@ export default function LoginWindow(props) {
         switch (error.code) {
             case "auth/user-not-found":
                 if (loginState.message !== "Користувача з такою поштою не існує")
-                    changeState({ email: true, password: false, message: "Користувача з такою поштою не існує" });
+                    changeState({ email: true, password: false, emailMessage: "Користувача з такою поштою не існує", passwordMessage: "" });
                 break;
             case "auth/wrong-password":
                 if (loginState.message !== "Ви ввели не правильний пароль")
-                    changeState({ email: false, password: true, message: "Ви ввели не правильний пароль" });
+                    changeState({ email: false, password: true, emailMessage: "", passwordMessage: "Ви ввели не правильний пароль" });
                 break;
         }
     }
@@ -71,12 +78,12 @@ export default function LoginWindow(props) {
             <div>
                 <label>Пошта</label>
                 <Input ref={email} invalid={loginState.email.toString()} type="email" autoComplete={true} />
-                <ErrorLable>{loginState.email ? loginState.message : ""}</ErrorLable>
+                <ErrorLable>{loginState.emailMessage}</ErrorLable>
             </div>
             <div>
                 <label>Пароль</label>
                 <Input ref={password} invalid={loginState.password.toString()} type="password" maxLength="16" />
-                <ErrorLable>{!loginState.email ? loginState.message : ""}</ErrorLable>
+                <ErrorLable>{loginState.passwordMessage}</ErrorLable>
             </div>
             <button onClick={login}>Увійти</button>
             {props.children}

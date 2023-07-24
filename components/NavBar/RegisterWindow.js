@@ -36,12 +36,19 @@ export default function RegisterWindow(props) {
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(props.auth);
     const email = useRef(0);
     const password = useRef(0);
-    const [registerState, changeState] = useState({ email: false, password: false, message: "" });
+    const [registerState, changeState] = useState({ email: false, password: false, emailMessage: "", passwordMessage: "" });
 
     //Реєстрація користувача за паролем і поштою
     function register() {
         if (email.current.value && password.current.value) {
             createUserWithEmailAndPassword(email.current.value, password.current.value);
+        } else {
+            changeState({
+                email: !email.current.value,
+                password: !password.current.value,
+                emailMessage: !email.current.value ? "Введіть пошту, будь ласка" : "",
+                passwordMessage: !password.current.value ? "Введіть пароль, будь ласка" : ""
+            });
         }
     }
 
@@ -54,15 +61,15 @@ export default function RegisterWindow(props) {
         switch (error.code) {
             case "auth/email-already-in-use":
                 if (registerState.message !== "Пошта вже зайнята")
-                    changeState({ email: true, password: false, message: "Пошта вже зайнята" });
+                    changeState({ email: true, password: false, emailMessage: "Пошта вже зайнята", passwordMessage: "" });
                 break;
             case "auth/invalid-email":
                 if (registerState.message !== "Ви ввели не правильну пошту")
-                    changeState({ email: true, password: false, message: "Ви ввели не правильну пошту" });
+                    changeState({ email: true, password: false, emailMessage: "Ви ввели не правильну пошту", passwordMessage: "" });
                 break;
             case "auth/weak-password":
                 if (registerState.message !== "Пароль повинен бути від 6 до 16")
-                    changeState({ email: false, password: true, message: "Пароль повинен бути від 6 до 16" });
+                    changeState({ email: false, password: true, emailMessage: "", passwordMessage: "Пароль повинен бути від 6 до 16" });
                 break;
         }
     }
@@ -73,12 +80,12 @@ export default function RegisterWindow(props) {
             <div>
                 <label>Пошта</label>
                 <Input ref={email} invalid={registerState.email.toString()} type="email" autoComplete={false} />
-                <ErrorLable>{registerState.email ? registerState.message : ""}</ErrorLable>
+                <ErrorLable>{registerState.emailMessage}</ErrorLable>
             </div>
             <div>
                 <label>Пароль</label>
                 <Input ref={password} invalid={registerState.password.toString()} type="password" maxLength="16" />
-                <ErrorLable>{!registerState.email ? registerState.message : ""}</ErrorLable>
+                <ErrorLable>{registerState.passwordMessage}</ErrorLable>
             </div>
             <button onClick={register}>Зареєструватися</button>
             {props.children}
