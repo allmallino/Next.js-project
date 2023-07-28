@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import NavList from '/components/NavBar/NavList'
 import ButtonToUp from '/components/ButtonToUp'
 import StyledComponentsRegistry from '../../lib/registry'
+import { Analytics } from '@vercel/analytics/react';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -23,6 +24,8 @@ export default function RootLayout({ children }) {
           </main>
           <ButtonToUp />
           <footer className='footer'><i>©RoundWorld 2023</i></footer>
+          <Analytics />
+          <link rel="preload" href='https://firestore.googleapis.com' />
         </body>
       </html>
     </StyledComponentsRegistry>

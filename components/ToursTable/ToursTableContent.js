@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { styled } from "styled-components";
-import PageButton from "./PageButton";
-import ContentCard from "../ContentCard/ContentCard";
+import dynamic from "next/dynamic";
+
+const PageButton = dynamic(() => import("./PageButton"));
+const ContentCard = dynamic(() => import("../ContentCard/ContentCard"));
 
 //Таблиця в якій будуть знаходитися всі наші карточки з турами
 const Section = styled.section`

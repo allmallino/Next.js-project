@@ -1,5 +1,7 @@
 import { styled } from "styled-components"
-import Comment from "./Comment"
+import dynamic from "next/dynamic"
+
+const Comment = dynamic(() => import("./Comment"));
 
 const Container = styled.div`
     width:100%;

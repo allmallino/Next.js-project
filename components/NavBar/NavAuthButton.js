@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import Popup from "reactjs-popup";
+import dynamic from "next/dynamic"
 import { styled } from "styled-components";
 import firebase_app from '@/firebase/config';
-import LoginWindow from "./LoginWindow";
-import RegisterWindow from "./RegisterWindow";
-import UserInteractionWindow from "./UserInteractionWindow";
-import LoginWithGoogleButton from "./LoginWithGoogleButton";
 import { doc, getFirestore, setDoc, getDoc } from "firebase/firestore";
+
+const Popup = dynamic(() => import("reactjs-popup"));
+const LoginWindow = dynamic(() => import("./LoginWindow"));
+const RegisterWindow = dynamic(() => import("./RegisterWindow"));
+const UserInteractionWindow = dynamic(() => import("./UserInteractionWindow"));
+const LoginWithGoogleButton = dynamic(() => import("./LoginWithGoogleButton"));
 
 //Текст, що відтворюватиме дію при натисканні
 const P = styled.p`
