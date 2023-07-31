@@ -9,9 +9,6 @@ export default function Thumbnails() {
     const [thumbnails, thumbnailsLoading, thumbnailsError] = useCollectionOnce(collection(getFirestore(firebase_app), "thumbnails"), []);
 
     if (!thumbnailsLoading && thumbnails) {
-        return <>
-            <Heading variant="1">Ласкаво просимо</Heading>
-            <ImageScroller childList={thumbnails.docs.map((v) => { return { key: v._document.key.path.segments[v._document.key.path.segments.length - 1], ...v.data() }; })} />
-        </>;
+        return <ImageScroller childList={thumbnails.docs.map((v) => { return { key: v._document.key.path.segments[v._document.key.path.segments.length - 1], ...v.data() }; })} />;
     }
 }

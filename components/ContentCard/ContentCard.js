@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import ContentImage from "./ContentImage";
-import Heading from "../Heading";
 import ButtonLink from "../ButtonLink";
 import Icon from "./Icon";
 
@@ -70,13 +69,22 @@ const C = styled.div`
         grid-template-columns:auto 2fr;
     `;
 
+const Head = styled.p`
+        margin:0 25px;
+        clear: both;
+        text-align:center;
+        padding: 15px 0;
+        font-size:1.7rem;
+        font-weight:600;
+    `;
+
 
 export default function ContentCard(props) {
 
     return (
         <Card>
             <ContentImage alt={props.title} src={props.src} variant="vertical" />
-            <Heading variant="3" >{props.title}</Heading>
+            <Head>{props.title}</Head>
             <Divider />
             <Grid>
                 <C>

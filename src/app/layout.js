@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <StyledComponentsRegistry>
-      <html lang="ua">
+      <html lang="uk">
         <body className={inter.className}>
           <NavList />
           <main className='container'>

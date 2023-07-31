@@ -20,9 +20,11 @@ const ListOfPages = styled.div`
 
 //Контейнер в якому буде знаходитися сам скроллер
 const Container = styled.div`
+    margin-top:15px;
+    margin-bottom:25px;
     border-radius:5px;
     overflow:hidden;
-    height:35dvh;
+    height:90dvh;
     min-height:500px;
     position:relative;
 

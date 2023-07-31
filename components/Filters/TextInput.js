@@ -19,7 +19,7 @@ export default function TextInput(props) {
     return (
         <Div name={props.name}>
             <label>{props.title}</label>
-            <Input onChange={props.onChange} type={props.type} placeholder={props.placeholder} min={props.min} max={props.max} value={props.value} />
+            <Input onChange={props.onChange} type={props.type} placeholder={props.placeholder} min={props.min} max={props.max} value={props.value} title={props.title} />
         </Div>
     )
 }

@@ -14,12 +14,12 @@ const Container = styled.section`
     gap:25px;
     width:75%;
     margin:0 auto;
-    padding:15px;
+    padding: 0 15px;
 
     @media screen and (max-width:900px) {
         width:100%;
         gap:15px;
-        padding:10px;
+        padding:0 10px;
     }
 `;
 

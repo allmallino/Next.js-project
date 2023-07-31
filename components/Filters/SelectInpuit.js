@@ -19,7 +19,7 @@ export default function SelectInput(props) {
     return (
         <Div name={props.name}>
             <label>{props.title}</label>
-            <Select onChange={props.onChange} value={props.value}>
+            <Select onChange={props.onChange} value={props.value} title={props.title}>
                 {props.options.map((v, i) => (<option value={i} key={i}>{v}</option>))}
             </Select>
         </Div>

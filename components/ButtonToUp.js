@@ -23,20 +23,35 @@ const C = styled.div`
         transition: 0.5s all;
     }
 
+    &::after{
+        content: "";
+        position: absolute;
+        left: 10px;
+        display: block;
+        width: 20px;
+        height: 20px;
+        border-top: 2px solid black;
+        border-left: 2px solid black;
+        top: 15px;
+        transform: rotate(135deg);
+    }
+
     @media screen and (max-width:768px) {
         top:calc(100vh - 35px);
         width:35px;
         height:35px;
-    }
-`;
 
-const I = styled.img`
-    max-width:100%;
-    max-height:100%;
+        &::after{
+        left: 10px;
+        width: 10px;
+        height: 10px;
+        top: 12px;
+    }
+    }
+
 `;
 
 export default function ButtonToUp() {
     return <C onClick={() => { window.scrollTo(0, 0); }}>
-        <I src="/icon-arrow.png" alt="up" />
     </C>
 }

@@ -24,7 +24,7 @@ const S = styled.section`
     justify-content: space-around;
     margin: 0 auto;
     width: 75%;
-    padding: 25px 0;
+    padding: 0 0 25px 0;
     
     @media screen and (max-width:1400px) {
         width: max-content;
