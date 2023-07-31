@@ -9,7 +9,7 @@ const H = styled.p`
         switch (props.variant) {
             case '1':
                 return css`
-                        padding: 25px 0 50px 0;
+                        padding: 50px 0 25px 0;
                         font-size:2.5rem;
                         font-weight:800;`;
             case '2':

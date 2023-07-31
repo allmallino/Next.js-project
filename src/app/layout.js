@@ -25,7 +25,8 @@ export default function RootLayout({ children }) {
           <ButtonToUp />
           <footer className='footer'><i>©RoundWorld 2023</i></footer>
           <Analytics />
-          <link rel="preload" href='https://firestore.googleapis.com' />
+          <link rel="preconnect" href='https://firestore.googleapis.com' />
+          <link rel="preconnect" href='https://apis.google.com' />
         </body>
       </html>
     </StyledComponentsRegistry>

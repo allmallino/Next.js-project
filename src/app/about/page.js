@@ -1,13 +1,11 @@
 import dynamic from "next/dynamic";
 import Heading from "/components/Heading";
-import ImageGallery from "../../../components/ImageGallery/ImageGallery";
 
 const Map = dynamic(() => import('/components/Map'), { ssr: false });
 
 export default function Home() {
   return <div>
     <Heading variant="1">Про нас</Heading>
-    <ImageGallery />
     <p>
       Ми - маленька, але енергійна команда, яка протягом двох років творить незабутні спогади для наших клієнтів.
       Ми пишаємося тим, що працюємо не тільки по всій країні, але й виїжджаємо за кордон, щоб задовольнити бажання наших подорожуючих.

@@ -75,7 +75,7 @@ export default function ImageScroller(props) {
                 {props.childList.map((v, i) => (<Page active={(i === selectedIndex).toString()} key={v.key} onClick={() => { changeIndex(i) }} />))}
             </ListOfPages>
             <ScrollerItem key={props.childList[selectedIndex].key}
-                href={props.childList[selectedIndex].href}
+                href="/"
                 src={props.childList[selectedIndex].image}
                 title={props.childList[selectedIndex].title}
                 text={props.childList[selectedIndex].text} />

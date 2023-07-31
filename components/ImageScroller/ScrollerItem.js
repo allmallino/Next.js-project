@@ -51,7 +51,7 @@ export default function ScrollerItem(props) {
                 <T>{props.title}</T>
                 <P>{props.text}</P>
             </Container>
-            <Img src={props.src} fill={true} alt={props.title} />
+            <Img src={props.src} fill={true} alt={props.title} placeholder="blur" priority={true} />
         </Link>
     );
 }
