@@ -33,7 +33,7 @@ const Container = styled.div`
 export default function ContentImage(props) {
     return (
         <Container variant={props.variant}>
-            <Img alt={props.alt} src={props.src} fill={true} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" placeholder="blur" />
+            <Img alt={props.alt} src={props.src} fill={true} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
         </Container>
     );
 }

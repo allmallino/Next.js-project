@@ -2,7 +2,7 @@ import Link from "next/link";
 import { styled } from "styled-components";
 
 //Посилання на іншу сторінку, стилізована під кнопку в панелі
-const L = styled.a`
+const L = styled(Link)`
     padding: 15px 25px;
     border-right: 1px solid black;
     text-decoration: none;

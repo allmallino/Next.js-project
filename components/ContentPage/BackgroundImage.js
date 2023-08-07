@@ -18,6 +18,6 @@ const Img = styled(Image)`
 export default function BackgroundImage(props) {
     return (
         <ImgContainer>
-            <Img alt={props.alt} src={props.src} fill={true} placeholder="blur" />
+            <Img alt={props.alt} src={props.src} fill={true} />
         </ImgContainer>);
 }

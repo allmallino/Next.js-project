@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { styled } from "styled-components";
+import Link from "next/link";
 
 //Контейнер, що буде мати наше зображення оголошення і супутній текст до нього
 //Також за бажанням, можна йому буде додати посилання на іншу сторінку (новина, акція і тд...)
-const Link = styled.a`
+const L = styled(Link)`
     text-decoration:none;
     height:100%;
     width:100%;
@@ -46,12 +47,12 @@ const T = styled.h1`
 export default function ScrollerItem(props) {
 
     return (
-        <Link href={props.href}>
+        <L href={props.href}>
             <Container>
                 <T>{props.title}</T>
                 <P>{props.text}</P>
             </Container>
-            <Img src={props.src} fill={true} alt={props.title} placeholder="blur" priority={true} />
-        </Link>
+            <Img src={props.src} fill={true} alt={props.title} priority={true} />
+        </L>
     );
 }

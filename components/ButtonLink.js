@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
+import Link from "next/link";
 
-const Button = styled.a`
+const Button = styled(Link)`
     text-decoration:none;
     color:black;
     background-color:#FCA311;
