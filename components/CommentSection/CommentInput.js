@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import ButtonLink from "../ButtonLink";
 import { useRef } from "react";
 import { doc, getFirestore, updateDoc } from "firebase/firestore";
 import firebase_app from "@/firebase/config";
@@ -12,6 +11,20 @@ const C = styled.section`
     justify-content:space-around;
     gap:10px;
 `;
+
+const Button = styled.p`
+    color:black;
+    background-color:#FCA311;
+    text-align:center;
+    padding:5px 10px;
+    cursor: pointer;
+    border-radius:5px;
+
+    &:hover{
+        color:white;
+        background-color:#14213D;
+    }
+`
 
 const Area = styled.textarea`
     resize:none;
@@ -29,7 +42,7 @@ export default function CommentInput(props) {
     if (props.user) {
         return <C>
             <Area maxLength={250} placeholder="Текст коментаря" ref={textRef} />
-            <ButtonLink onClick={async () => {
+            <Button onClick={async () => {
                 //Додає новий коментар в масив коментарів
                 if (textRef.current.value.length >= 4) {
                     let text = textRef.current.value;
@@ -38,7 +51,7 @@ export default function CommentInput(props) {
                 } else {
                     alert("Вибачте, але користувачі можуть залишати коментарі мінімальною довжиною 4 символи")
                 }
-            }}>Коментувати</ButtonLink>
+            }}>Коментувати</Button>
         </C >
     }
 }

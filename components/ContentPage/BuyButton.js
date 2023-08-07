@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { styled } from "styled-components";
 
-const Button = styled.a`
-    text-decoration:none;
+const Button = styled.p`
     width: 80%;
     padding: 10px 5px;
     display: flex;
