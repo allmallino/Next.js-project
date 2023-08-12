@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import ContentImage from "./ContentImage";
 import ButtonLink from "../ButtonLink";
 import Icon from "./Icon";
+import Link from "next/link";
 
 //Вертикальна карточка
 const Card = styled.section`
@@ -13,7 +14,7 @@ const Card = styled.section`
         background-color:white;
         box-shadow: 2px 2px 10px black;
 
-        & a{
+        & a:last-child{
             position:absolute;
             left:50%;
             transform: translate(-50%, -50%);
@@ -83,7 +84,9 @@ export default function ContentCard(props) {
 
     return (
         <Card>
-            <ContentImage alt={props.title} src={props.src} variant="vertical" />
+            <Link href={props.href}>
+                <ContentImage alt={props.title} src={props.src} variant="vertical" />
+            </Link>
             <Head>{props.title}</Head>
             <Divider />
             <Grid>
