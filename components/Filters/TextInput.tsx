@@ -1,6 +1,8 @@
 import { css, styled } from "styled-components"
 
-
+interface Props{
+    name:string
+}
 const Input = styled.input`
         width:100%;
         height:35px;
@@ -11,7 +13,7 @@ const Input = styled.input`
         padding-left:5px;
     `;
 
-const Div = styled.div`
+const Div = styled.div<Props>`
         ${props => css`grid-area:${props.name};`}
     `;
 

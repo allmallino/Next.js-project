@@ -34,7 +34,7 @@ function filterTours(filters, tours) {
 }
 
 export default function ToursTable() {
-    const [tours, toursLoading, toursError] = useCollectionOnce(collection(getFirestore(firebase_app), "tours-thumbnails"), []);
+    const [tours, toursLoading, toursError] = useCollectionOnce(collection(getFirestore(firebase_app), "tours-thumbnails"));
 
     const [filters, changeFilter] = useState({
         name: "",
@@ -58,7 +58,7 @@ export default function ToursTable() {
 
     let formattedTours;
     if (!toursLoading && tours) {
-        formattedTours = tours.docs.map((v) => { return { key: v._document.key.path.segments[v._document.key.path.segments.length - 1], ...v.data() }; });
+        formattedTours = tours.docs.map((v) => { return { key: v['_document'].key.path.segments[v['_document'].key.path.segments.length - 1], ...v.data() }; });
         return (<>
             <Filters onChange={setFilter} selectedFilters={filters} />
             <ToursTableContent tours={filterTours(filters, formattedTours)} />

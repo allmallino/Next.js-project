@@ -1,5 +1,8 @@
 import { css, styled } from "styled-components"
 
+interface Props{
+    name:string
+}
 
 const Select = styled.select`
         height:35px;
@@ -10,7 +13,7 @@ const Select = styled.select`
         font-size:1rem;
     `;
 
-const Div = styled.div`
+const Div = styled.div<Props>`
         ${props => css`grid-area:${props.name};`}
     `;
 

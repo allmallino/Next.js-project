@@ -2,19 +2,19 @@
 import { useDocument } from 'react-firebase-hooks/firestore'
 import firebase_app from '@/firebase/config'
 import { getFirestore, doc } from "firebase/firestore"
-import BackgroundImage from '/components/ContentPage/BackgroundImage';
-import ContentTitle from '/components/ContentPage/ContentTitle';
-import ContentText from '/components/ContentPage/ContentText';
+import BackgroundImage from '../../../../components/ContentPage/BackgroundImage';
+import ContentTitle from '../../../../components/ContentPage/ContentTitle';
+import ContentText from '../../../../components/ContentPage/ContentText';
 import dynamic from 'next/dynamic';
-import BuyButton from '/components/ContentPage/BuyButton';
-import PageItem from '/components/ContentPage/PageItem';
+import BuyButton from '../../../../components/ContentPage/BuyButton';
+import PageItem from '../../../../components/ContentPage/PageItem';
 import CommentSection from '../../../../components/CommentSection/CommentSection';
 import { getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import CommentInput from '../../../../components/CommentSection/CommentInput';
 import Heading from '../../../../components/Heading';
 
-const Map = dynamic(() => import('/components/Map'), { ssr: false });
+const Map = dynamic(() => import('../../../../components/Map'), { ssr: false });
 const auth = getAuth(firebase_app);
 
 const Button = (p) => {
@@ -25,7 +25,7 @@ const Button = (p) => {
 }
 
 export default function Page({ params }) {
-    const [tour, tourLoading, tourError] = useDocument(doc(getFirestore(firebase_app), "tours", params.id), []);
+    const [tour, tourLoading, tourError] = useDocument(doc(getFirestore(firebase_app), "tours", params.id));
     const [user, userLoading, error] = useAuthState(auth);
 
 

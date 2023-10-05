@@ -24,7 +24,7 @@ const Container = styled.section`
 `;
 
 export default function CartList(props) {
-    const [cart, cartLoading, cartError] = useDocument(doc(getFirestore(firebase_app), "users", props.user.uid), []);
+    const [cart, cartLoading, cartError] = useDocument(doc(getFirestore(firebase_app), "users", props.user.uid));
     if (cart) {
         return <>
             <Heading variant="2">Заброньовано</Heading>

@@ -24,5 +24,10 @@
     "reactjs-popup": "^2.0.5",
     "sharp": "^0.32.4",
     "styled-components": "^6.0.0-rc.3"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.6",
+    "@types/react": "18.2.24",
+    "@types/styled-system": "^5.1.17"
   }
 }

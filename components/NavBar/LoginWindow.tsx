@@ -4,8 +4,12 @@ import Heading from "../Heading";
 import { css, styled } from 'styled-components';
 import LoadingGif from "../LoadingGif";
 
+interface Props{
+    invalid:string
+}
+
 //Місце вводу пошти і пароля для авторизації
-const Input = styled.input`
+const Input = styled.input<Props>`
     width:100%;
     height:35px;
     border-radius: 4px;
@@ -34,8 +38,8 @@ const ErrorLable = styled.label`
 
 export default function LoginWindow(props) {
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(props.auth);
-    const email = useRef(0);
-    const password = useRef(0);
+    const email = useRef<HTMLInputElement>();
+    const password = useRef<HTMLInputElement>();
     const [loginState, changeState] = useState({ email: false, password: false, emailMessage: "", passwordMessage: "" });
 
     //Аторизація користувача
@@ -77,12 +81,12 @@ export default function LoginWindow(props) {
             <Heading variant="3">Логін</Heading>
             <div>
                 <label>Пошта</label>
-                <Input ref={email} invalid={loginState.email.toString()} type="email" autoComplete={true} />
+                <Input ref={email} invalid={loginState.email.toString()} type="email" autoComplete={"true"} />
                 <ErrorLable>{loginState.emailMessage}</ErrorLable>
             </div>
             <div>
                 <label>Пароль</label>
-                <Input ref={password} invalid={loginState.password.toString()} type="password" maxLength="16" />
+                <Input ref={password} invalid={loginState.password.toString()} type="password" maxLength={16} />
                 <ErrorLable>{loginState.passwordMessage}</ErrorLable>
             </div>
             <button onClick={login}>Увійти</button>
