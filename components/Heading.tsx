@@ -1,7 +1,12 @@
 'use client'
 import { css, styled } from "styled-components";
 
-const H = styled.p`
+interface Props{
+    readonly variant?:string;
+}
+
+
+const H = styled.p<Props>`
     margin:0;
     clear: both;
     text-align:center;

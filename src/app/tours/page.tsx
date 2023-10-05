@@ -1,6 +1,6 @@
 "use client"
-import Heading from "/components/Heading";
-import ToursTable from "/components/ToursTable/ToursTable";
+import Heading from "../../../components/Heading";
+import ToursTable from "../../../components/ToursTable/ToursTable";
 
 export default function Home() {
   return <>

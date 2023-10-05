@@ -46,15 +46,16 @@ const S = styled.section`
 
 export default function ToursSegment() {
 
-    const [tours, toursLoading, toursError] = useCollectionOnce(query(collection(getFirestore(firebase_app), "tours-thumbnails"), orderBy("buyers"), limit(3)), []);
+    const [tours, toursLoading, toursError] = useCollectionOnce(query(collection(getFirestore(firebase_app), "tours-thumbnails"), orderBy("buyers"), limit(3)));
 
     if (!toursLoading && tours) {
-        let ourTours = tours.docs.map((v) => { return { key: v._document.key.path.segments[v._document.key.path.segments.length - 1], ...v.data() }; });
+        let ourTours = tours.docs.map((v) => { return { key: v['_document'].key.path.segments[v['_document'].key.path.segments.length - 1], ...v.data() }; });
+        
         return (<D>
             <Heading variant="2">Популярні тури</Heading>
 
             <S>
-                {ourTours.map((v) => (<ContentCard key={v.key} href={"/tours/" + v.key} title={v.title} src={v.image} price={v.price} place={v.city} date={v.date} duration={v.duration} />))}
+                {ourTours.map((v) => (<ContentCard key={v.key} href={"/tours/" + v.key} title={v['title']} src={v['image']} price={v['price']} place={v['city']} date={v['date']} duration={v['duration']} />))}
             </S>
             <ButtonLink href="\tours">Більше</ButtonLink>
 

@@ -1,8 +1,11 @@
 import { css, styled } from "styled-components";
 
+interface Props{
+    active:string
+}
 //Кнока для перемикання між сторінками.
 //Має два стани: коли відкрита сторінка, яку відображає ця кнопка, і, коли відкрита інша сторінка
-const Button = styled.div`
+const Button = styled.div<Props>`
         display:flex;
         border-radius:4px;
         width:25px;

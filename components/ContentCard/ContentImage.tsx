@@ -1,6 +1,10 @@
 import Image from "next/image";
 import { css, styled } from "styled-components";
 
+interface Props{
+    variant:string
+}
+
 //Картинка в карточці
 const Img = styled(Image)`
         min-width:100%;
@@ -11,7 +15,7 @@ const Img = styled(Image)`
 
 //Контейнер, в якому буде лежати картинка, при наведенні на нього, ця картинка буде розширюватися.
 //Він може бути як і в вертикальній карточці, так і в горизонтальній
-const Container = styled.div`
+const Container = styled.div<Props>`
         position:relative;
         overflow: hidden;
         ${props => {

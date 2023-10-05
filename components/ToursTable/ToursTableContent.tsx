@@ -75,6 +75,6 @@ export default function ToursTableContent(props) {
             {props.tours.map((v) => (<ContentCard key={v.key} href={"/tours/" + v.key} title={v.title} src={v.image} price={v.price} place={v.city} date={v.date} duration={v.duration} />))}
         </Section>;
     } else {
-        return <I>Нажаль ми не маємо турів за заданими фільтрами</I>;
+        return <I>На жаль, ми не маємо турів за заданими фільтрами</I>;
     }
 }

@@ -1,7 +1,11 @@
 import { random } from "lodash";
 import { css, styled } from "styled-components";
 
-const Logo = styled.div`
+interface Props{
+    size:string
+}
+
+const Logo = styled.div<Props>`
     border-radius:50%;
     ${() => {
         //Рандомно обираємо градієнт на задній план лого користувача
@@ -29,8 +33,14 @@ const Logo = styled.div`
     ${props => { return css`width:${props.size}; height:${props.size};` }}
 `;
 
-export default function ProfileLogo(props) {
-    return <Logo size={props.size}>
-        <p>{props.nickname[0]}</p>
+export default function ProfileLogo({
+    size, 
+    nickname
+}:{
+    size:string,
+    nickname:string
+}) {
+    return <Logo size={size}>
+        <p>{nickname[0]}</p>
     </Logo>
 }

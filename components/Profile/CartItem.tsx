@@ -34,7 +34,7 @@ const Card = styled(Link)`
 `;
 
 export default function CartItem(props) {
-    const [tour, tourLoading, tourError] = useDocument(doc(getFirestore(firebase_app), "tours-thumbnails", props.id), []);
+    const [tour, tourLoading, tourError] = useDocument(doc(getFirestore(firebase_app), "tours-thumbnails", props.id));
     if (tour) {
         return <Card href={"/tours/" + props.id}>
             <ContentImage alt={tour.data().title} src={tour.data().image} variant="horizontal" />

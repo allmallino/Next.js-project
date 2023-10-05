@@ -38,7 +38,7 @@ const Area = styled.textarea`
 `;
 
 export default function CommentInput(props) {
-    const textRef = useRef(0);
+    const textRef = useRef<HTMLTextAreaElement>();
     if (props.user) {
         return <C>
             <Area maxLength={250} placeholder="Текст коментаря" ref={textRef} />

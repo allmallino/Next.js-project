@@ -22,7 +22,7 @@ const Button = styled.p`
 
 export default function BuyButton(props) {
     const [buyingState, setBuyingState] = useState(false);
-    const [cart, cartLoading, cartError] = useDocument(doc(getFirestore(firebase_app), "users", props.user.uid), []);
+    const [cart, cartLoading, cartError] = useDocument(doc(getFirestore(firebase_app), "users", props.user.uid));
 
     //На початку нам потрібно дізнатися, чи користувач вже оорендував цей тур
     useEffect(() => {

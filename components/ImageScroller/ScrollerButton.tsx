@@ -1,8 +1,11 @@
 'use client';
 import { css, styled } from "styled-components";
 
+interface Props{
+    variant:string
+} 
 //Кнопка, за допомогою якої користувач може перемикати сторінки в скроллері
-const Button = styled.img`
+const Button = styled.img<Props>`
     position:absolute;
     z-index:2;
     background-color:#E5E5E5;

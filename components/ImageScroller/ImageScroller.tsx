@@ -4,6 +4,9 @@ import ScrollerItem from "./ScrollerItem";
 import { useState } from "react";
 import ScrollerButton from "./ScrollerButton";
 
+interface Props{
+    active:string
+}
 //Контейнер для точок, які будуть відображати відповідну сторінку в нашому скроллері
 const ListOfPages = styled.div`
     border-radius:5px;
@@ -34,7 +37,7 @@ const Container = styled.div`
 `;
 
 //Точка, яка відображає сторінку в скроллері
-const Page = styled.div`
+const Page = styled.div<Props>`
     border-radius:50%;
     height:10px;
     width:10px;

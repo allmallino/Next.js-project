@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getAuth } from 'firebase/auth';
+import { User, getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import dynamic from "next/dynamic"
 import { styled } from "styled-components";
@@ -78,14 +78,14 @@ const auth = getAuth(firebase_app);
 export default function NavAuthButton() {
     const [previousUser, loading, error] = useAuthState(auth);
     const [loginState, setState] = useState(true);
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState<User>();
 
     //Створюємо лист замовлень, в який ми будемо додавати нові тури, які забронював користувач
     async function createList() {
-        let state = (await getDoc(doc(getFirestore(firebase_app), "users", user.uid))).data();
+        let state = (await getDoc(doc(getFirestore(firebase_app), "users", user['uid']))).data();
         if (typeof state === "undefined") {
             let list = [];
-            await setDoc(doc(getFirestore(firebase_app), "users", user.uid), { list, });
+            await setDoc(doc(getFirestore(firebase_app), "users", user['uid']), { list, });
         }
     }
 
@@ -130,7 +130,7 @@ export default function NavAuthButton() {
         //Якщо ми змогли підтягнути дані користувача, ми його авторизуємо і даємо можливість подивитися його профіль, або вийти з акаунту
         createList();
         return (
-            <Popup trigger={<P>{user.email.substring(0, user.email.indexOf("@"))}</P>} position="bottom" on="hover" closeOnDocumentClick mouseLeaveDelay={300} mouseEnterDelay={0} arrow={false}>
+            <Popup trigger={<P>{user['email'].substring(0, user['email'].indexOf("@"))}</P>} position={"bottom center"} on="hover" closeOnDocumentClick mouseLeaveDelay={300} mouseEnterDelay={0} arrow={false}>
                 <UserInteractionWindow selectUser={setUser} auth={auth} />
             </Popup>
         );

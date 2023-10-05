@@ -39,5 +39,4 @@ export default function Map(props) {
         />
         {content}
     </MapContainer>;
-
 }

@@ -52,7 +52,7 @@ const Img = styled(Image)`
 
 export default function ImageGallery() {
     const [selectedIndex, changeIndex] = useState(0);
-    const [images, imagesLoading, imagessError] = useCollectionOnce(collection(getFirestore(firebase_app), "gallery"), []);
+    const [images, imagesLoading, imagessError] = useCollectionOnce(collection(getFirestore(firebase_app), "gallery"));
 
     //Перемикаємо на ліве зображення
     function leftChildSelect() {

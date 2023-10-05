@@ -4,8 +4,12 @@ import Heading from "../Heading";
 import { css, styled } from 'styled-components';
 import LoadingGif from "../LoadingGif";
 
+interface Props{
+    invalid:string
+}
+
 //Місце вводу пошти і пароля для реєстрації
-const Input = styled.input`
+const Input = styled.input<Props>`
     width:100%;
     height:35px;
     border-radius: 4px;
@@ -34,8 +38,8 @@ const ErrorLable = styled.label`
 
 export default function RegisterWindow(props) {
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(props.auth);
-    const email = useRef(0);
-    const password = useRef(0);
+    const email = useRef<HTMLInputElement>();
+    const password = useRef<HTMLInputElement>();
     const [registerState, changeState] = useState({ email: false, password: false, emailMessage: "", passwordMessage: "" });
 
     //Реєстрація користувача за паролем і поштою
@@ -79,12 +83,12 @@ export default function RegisterWindow(props) {
             <Heading variant="3">Реєстрація</Heading>
             <div>
                 <label>Пошта</label>
-                <Input ref={email} invalid={registerState.email.toString()} type="email" autoComplete={false} />
+                <Input ref={email} invalid={registerState.email.toString()} type="email" autoComplete={"false"} />
                 <ErrorLable>{registerState.emailMessage}</ErrorLable>
             </div>
             <div>
                 <label>Пароль</label>
-                <Input ref={password} invalid={registerState.password.toString()} type="password" maxLength="16" />
+                <Input ref={password} invalid={registerState.password.toString()} type="password" maxLength={16} />
                 <ErrorLable>{registerState.passwordMessage}</ErrorLable>
             </div>
             <button onClick={register}>Зареєструватися</button>
