@@ -60,6 +60,9 @@ const Grid = styled.div`
         margin: 25px 10%;
         grid-template-columns: 1fr 1fr;
         row-gap:35px;
+        align-items:center;
+        justify-items:center;
+        grid-template-rows:20px 35px;
     `;
 
 //Контейнер характеристики, в якому буде знаходитися іконка і значення
@@ -71,14 +74,19 @@ const C = styled.div`
     `;
 
 const Head = styled.p`
-        margin:0 25px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-overflow: ellipsis;
+        overflow:hidden;
+        margin:0 15px;
+        height:70px;
         clear: both;
         text-align:center;
         padding: 15px 0;
         font-size:1.7rem;
         font-weight:600;
     `;
-
 
 export default function ContentCard(props) {
 

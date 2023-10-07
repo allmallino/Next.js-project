@@ -57,7 +57,7 @@ const Container = styled.div`
     }
 
     @media screen and (max-width:768px) {
-        width:45vw
+        width:65vw
     }
 `;
 

@@ -2,6 +2,7 @@
 import { styled } from "styled-components";
 import NavButton from "./NavButton";
 import NavAuthButton from "./NavAuthButton";
+import { useState } from "react";
 
 //Верхня панель
 const Container = styled.div`
@@ -37,17 +38,19 @@ const Li = styled.li`
 `;
 
 export default function NavList() {
+    const [currentPage, changePage]= useState(0);
+
     return (
         <Container>
             <Ul>
                 <Li>
-                    <NavButton href="/">
+                    <NavButton href="/" variant={currentPage===0?"active":""} onClick={()=>{changePage(0);}}>
                         Головна
                     </NavButton>
-                    <NavButton href="/tours">
+                    <NavButton href="/tours" variant={currentPage===1?"active":""} onClick={()=>{changePage(1);}}>
                         Тури
                     </NavButton>
-                    <NavButton href="/about">
+                    <NavButton href="/about" variant={currentPage===2?"active":""} onClick={()=>{changePage(2);}}>
                         Про нас
                     </NavButton>
                 </Li>
