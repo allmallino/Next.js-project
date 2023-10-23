@@ -13,6 +13,7 @@ import { getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import CommentInput from '../../../../components/CommentSection/CommentInput';
 import Heading from '../../../../components/Heading';
+import NotFoundMessage from '../../../../components/NotFoundMessage';
 
 const Map = dynamic(() => import('../../../../components/Map'), { ssr: false });
 const auth = getAuth(firebase_app);
@@ -29,8 +30,7 @@ export default function Page({ params }) {
     const [user, userLoading, error] = useAuthState(auth);
 
 
-
-    if (!tourLoading && tour && !userLoading) {
+    if (!tourLoading && tour.data() && !userLoading) {
         let ourTour = tour.data();
         return <>
             <BackgroundImage src={ourTour.image} alt={ourTour.title} />
@@ -45,6 +45,7 @@ export default function Page({ params }) {
             <CommentInput user={user} tour={params.id} comments={ourTour.comments} />
             <CommentSection comments={ourTour.comments} />
         </>
-
+    }else if(!tourLoading){
+        return <NotFoundMessage text='Назад' link='/tours'/>
     }
 }

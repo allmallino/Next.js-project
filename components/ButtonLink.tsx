@@ -19,5 +19,5 @@ const Button = styled(Link)`
 
 export default function ButtonLink(props: any) {
 
-    return (<Button href={ props.href } onClick = { props.onClick } > { props.children }</Button>)
+    return (<Button href={ props.href }> { props.children }</Button>)
 }

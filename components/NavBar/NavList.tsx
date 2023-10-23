@@ -1,5 +1,6 @@
 'use client'
 import { styled } from "styled-components";
+import { usePathname } from 'next/navigation';
 import NavButton from "./NavButton";
 import NavAuthButton from "./NavAuthButton";
 import { useState } from "react";
@@ -38,19 +39,18 @@ const Li = styled.li`
 `;
 
 export default function NavList() {
-    const [currentPage, changePage]= useState(0);
 
     return (
         <Container>
             <Ul>
                 <Li>
-                    <NavButton href="/" variant={currentPage===0?"active":""} onClick={()=>{changePage(0);}}>
+                    <NavButton href="/" variant={usePathname()==="/"?"active":""}>
                         Головна
                     </NavButton>
-                    <NavButton href="/tours" variant={currentPage===1?"active":""} onClick={()=>{changePage(1);}}>
+                    <NavButton href="/tours" variant={usePathname().startsWith("/tours")?"active":""}>
                         Тури
                     </NavButton>
-                    <NavButton href="/about" variant={currentPage===2?"active":""} onClick={()=>{changePage(2);}}>
+                    <NavButton href="/about" variant={usePathname().startsWith("/about")?"active":""}>
                         Про нас
                     </NavButton>
                 </Li>

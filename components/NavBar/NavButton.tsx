@@ -36,7 +36,7 @@ const L = styled(Link)<Props>`
 
 export default function NavButton(props) {
 
-    return <L variant={props.variant} href={props.href} onClick={props.onClick}>
+    return <L variant={props.variant} href={props.href}>
         {props.children}
     </L>;
 }
