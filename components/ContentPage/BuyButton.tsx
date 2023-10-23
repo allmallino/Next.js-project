@@ -3,21 +3,13 @@ import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { styled } from "styled-components";
+import ButtonLink from "../ButtonLink";
 
-const Button = styled.p`
+const Container = styled.div`
+    & button{
     width: 80%;
-    padding: 10px 5px;
     display: flex;
-    align-items: center;
-    justify-content: center;
     margin: 10px auto;
-    cursor: pointer;
-    color: black;
-    border-radius:5px;
-    background-color: #FCA311;
-    &:hover{
-        color: white;
-        background-color: #14213D;
     }`;
 
 export default function BuyButton(props) {
@@ -47,15 +39,11 @@ export default function BuyButton(props) {
     }
 
     if (cart) {
-        if (buyingState) {
-            return (
-                <Button onClick={() => { selectProduct(props.tour); setBuyingState(false); }}>Відмінити бронювання</Button>
-            )
-        } else {
-            return (
-                <Button onClick={() => { selectProduct(props.tour); setBuyingState(true); }}>Забронювати</Button>
-            )
-        }
+        return (
+            <Container>
+                <ButtonLink onClick={() => { selectProduct(props.tour); setBuyingState((val)=>{return !val}); }}>{buyingState?"Відмінити бронювання":"Забронювати"}</ButtonLink>
+            </Container>
+        )
     }
 
 }

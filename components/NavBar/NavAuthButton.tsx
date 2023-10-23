@@ -70,6 +70,10 @@ const Link = styled.p`
     &:hover{
         color:#FCA311;
     }
+
+    &::selection{
+        background-color:empty;
+    }
 `;
 
 

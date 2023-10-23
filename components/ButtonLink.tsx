@@ -1,23 +1,35 @@
-import { styled } from "styled-components";
 import Link from "next/link";
-
-const Button = styled(Link)`
-    text-decoration:none;
-    color:black;
-    background-color:#FCA311;
-    text-align:center;
-    padding:5px 10px;
-    cursor: pointer;
-    border-radius:5px;
-
-    &:hover{
-        color:white;
-        background-color:#14213D;
-    }
-`;
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 
 
-export default function ButtonLink(props: any) {
+const theme = createTheme({
+    palette: {
+        primary: {
+          main: '#FCA311',
+          light: '#ffaf2e',
+          dark: '#ca810c',
+          contrastText: '#000000',
+        },
+      },
+      typography:{
+        fontFamily:'__Inter_a64ecd, __Inter_Fallback_a64ecd'
+      }
+})
 
-    return (<Button href={ props.href }> { props.children }</Button>)
+
+export default function ButtonLink({href, children, onClick}:{children:any, href?:string, onClick?:React.MouseEventHandler}) {
+
+    return (
+    <ThemeProvider theme={theme}>
+        {href?(
+            <Link href={href}>
+                <Button variant="contained" color="primary" onClick={onClick}  sx={{ textTransform: 'capitalize'}}>{children}</Button>
+            </Link>
+        ):(
+            <Button variant="contained" color="primary" onClick={onClick} sx={{ textTransform: 'capitalize'}}>{children}</Button>
+        )}
+        
+    </ThemeProvider>
+    )
 }

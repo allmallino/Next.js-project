@@ -3,6 +3,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Heading from "../Heading";
 import { css, styled } from 'styled-components';
 import LoadingGif from "../LoadingGif";
+import ButtonLink from "../ButtonLink";
 
 interface Props{
     invalid:string
@@ -89,7 +90,7 @@ export default function LoginWindow(props) {
                 <Input ref={password} invalid={loginState.password.toString()} type="password" maxLength={16} />
                 <ErrorLable>{loginState.passwordMessage}</ErrorLable>
             </div>
-            <button onClick={login}>Увійти</button>
+            <ButtonLink onClick={login}>Увійти</ButtonLink>
             {props.children}
         </>
     )

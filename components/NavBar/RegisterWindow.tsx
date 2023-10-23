@@ -3,6 +3,7 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Heading from "../Heading";
 import { css, styled } from 'styled-components';
 import LoadingGif from "../LoadingGif";
+import ButtonLink from "../ButtonLink";
 
 interface Props{
     invalid:string
@@ -91,7 +92,7 @@ export default function RegisterWindow(props) {
                 <Input ref={password} invalid={registerState.password.toString()} type="password" maxLength={16} />
                 <ErrorLable>{registerState.passwordMessage}</ErrorLable>
             </div>
-            <button onClick={register}>Зареєструватися</button>
+            <ButtonLink onClick={register}>Зареєструватися</ButtonLink>
             {props.children}
         </>
     )
