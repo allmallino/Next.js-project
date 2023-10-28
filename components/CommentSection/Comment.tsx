@@ -35,7 +35,7 @@ const I = styled.i`
 
 export default function Comment(props) {
     return <C>
-        <ProfileLogo nickname={props.nickname} size="50px" />
+        <ProfileLogo nickname={props.nickname} size="50px" image={props.image} />
         <div>
             <T>{props.nickname}</T>
             <I>{props.date}</I>

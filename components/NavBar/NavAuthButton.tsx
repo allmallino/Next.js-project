@@ -134,7 +134,7 @@ export default function NavAuthButton() {
         //Якщо ми змогли підтягнути дані користувача, ми його авторизуємо і даємо можливість подивитися його профіль, або вийти з акаунту
         createList();
         return (
-            <Popup trigger={<P>{user['email'].substring(0, user['email'].indexOf("@"))}</P>} position={"bottom center"} on="hover" closeOnDocumentClick mouseLeaveDelay={300} mouseEnterDelay={0} arrow={false}>
+            <Popup trigger={<P>{user['displayName']?user['displayName']:user['email'].substring(0, user['email'].indexOf("@"))}</P>} position={"bottom center"} on="hover" closeOnDocumentClick mouseLeaveDelay={300} mouseEnterDelay={0} arrow={false}>
                 <UserInteractionWindow selectUser={setUser} auth={auth} />
             </Popup>
         );

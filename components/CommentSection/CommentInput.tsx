@@ -34,7 +34,7 @@ export default function CommentInput(props) {
                 if (textRef.current.value.length >= 4) {
                     let text = textRef.current.value;
                     textRef.current.value = "";
-                    await updateDoc(doc(getFirestore(firebase_app), "tours", props.tour), { comments: [{ text: text, date: (new Date(Date.now())).toLocaleDateString(), nickname: props.user.email.substring(0, props.user.email.indexOf("@")) }, ...props.comments] })
+                    await updateDoc(doc(getFirestore(firebase_app), "tours", props.tour), { comments: [{ text: text, date: (new Date(Date.now())).toLocaleDateString(), nickname: props.user['displayName']?props.user['displayName']:props.user['email'].substring(0, props.user['email'].indexOf("@")), image:props.user.photoURL }, ...props.comments] })
                 } else {
                     alert("Вибачте, але користувачі можуть залишати коментарі мінімальною довжиною 4 символи")
                 }

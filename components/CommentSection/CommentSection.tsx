@@ -16,7 +16,7 @@ export default function CommentSection(props) {
     if (props.comments.length >= 1) {
         return <Container>
             {/* Створює коментарі з завантаженої інформації*/}
-            {props.comments.map((v, i) => (<Comment nickname={v.nickname} text={v.text} date={v.date} key={i} />))}
+            {props.comments.map((v, i) => (<Comment nickname={v.nickname} text={v.text} date={v.date} image={v.image} key={i} />))}
         </Container>
     } else {
         return <Container>
