@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import { useRef } from "react";
-import { doc, getFirestore, updateDoc } from "firebase/firestore";
+import {getFirestore, addDoc, collection } from "firebase/firestore";
 import firebase_app from "@/firebase/config";
 import ButtonLink from "../ButtonLink";
 
@@ -34,7 +34,7 @@ export default function CommentInput(props) {
                 if (textRef.current.value.length >= 4) {
                     let text = textRef.current.value;
                     textRef.current.value = "";
-                    await updateDoc(doc(getFirestore(firebase_app), "tours", props.tour), { comments: [{ text: text, date: (new Date(Date.now())).toLocaleDateString(), nickname: props.user['displayName']?props.user['displayName']:props.user['email'].substring(0, props.user['email'].indexOf("@")), image:props.user.photoURL }, ...props.comments] })
+                    await addDoc(collection(getFirestore(firebase_app), "comments"), {id_tour:props.tour, text: text, date: (new Date(Date.now())).toLocaleDateString(), nickname: props.user['displayName']?props.user['displayName']:props.user['email'].substring(0, props.user['email'].indexOf("@")), image:props.user.photoURL});
                 } else {
                     alert("Вибачте, але користувачі можуть залишати коментарі мінімальною довжиною 4 символи")
                 }
