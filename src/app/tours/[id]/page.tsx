@@ -43,7 +43,7 @@ export default function Page({ params }) {
             <Button user={user} id={params.id} />
             <Heading variant="2">Коментарі</Heading>
             <CommentInput user={user} tour={params.id} comments={ourTour.comments} />
-            <CommentSection comments={ourTour.comments} />
+            <CommentSection tour={params.id} />
         </>
     }else if(!tourLoading){
         return <NotFoundMessage text='Назад' link='/tours'/>
