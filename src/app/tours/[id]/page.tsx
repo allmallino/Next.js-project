@@ -42,7 +42,7 @@ export default function Page({ params }) {
             <Map coordinates={ourTour.route} width="100%" height="400px" />
             <Button user={user} id={params.id} />
             <Heading variant="2">Коментарі</Heading>
-            <CommentInput user={user} tour={params.id}/>
+            <CommentInput user={user} tour={params.id} />
             <CommentSection tour={params.id} />
         </>
     }else if(!tourLoading){
