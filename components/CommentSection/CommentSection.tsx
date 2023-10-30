@@ -2,7 +2,7 @@ import { styled } from "styled-components"
 import dynamic from "next/dynamic"
 import {collection, getFirestore, orderBy, query, where} from "firebase/firestore";
 import firebase_app from "@/firebase/config";
-import { useCollectionOnce } from "react-firebase-hooks/firestore";
+import { useCollection, useCollectionOnce } from "react-firebase-hooks/firestore";
 
 const Comment = dynamic(() => import("./Comment"));
 
@@ -17,7 +17,7 @@ const I = styled.i`
 `
 
 export default function CommentSection(props) {
-    const [comments, commentsLoading, commentsError] = useCollectionOnce(query(collection(getFirestore(firebase_app), "comments"), where("id_tour","==",props.tour)));
+    const [comments, commentsLoading, commentsError] = useCollection(query(collection(getFirestore(firebase_app), "comments"), where("id_tour","==",props.tour)));
     if(comments && !commentsLoading){
         if (comments.docs.length >= 1) {
             return <Container>

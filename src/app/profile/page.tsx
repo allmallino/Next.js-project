@@ -17,7 +17,7 @@ export default function Home() {
         </>
     }
     else if (!userLoading) {
-        return <Heading variant="1">Будь-ласка, залогінтеся, щоб подивитися інформацію про акаунт</Heading>
+        return <Heading variant="1">Залогінтеся, щоб подивитися інформацію про акаунт</Heading>
     }
 
 }

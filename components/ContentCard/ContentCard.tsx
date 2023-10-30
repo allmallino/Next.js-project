@@ -1,8 +1,11 @@
 import { styled } from "styled-components";
 import ContentImage from "./ContentImage";
 import ButtonLink from "../ButtonLink";
-import Icon from "./Icon";
 import Link from "next/link";
+import AttachMoneyRoundedIcon from '@mui/icons-material/AttachMoneyRounded';
+import CalendarMonthRoundedIcon from '@mui/icons-material/CalendarMonthRounded';
+import AccessTimeFilledRoundedIcon from '@mui/icons-material/AccessTimeFilledRounded';
+import MapRoundedIcon from '@mui/icons-material/MapRounded';
 
 //Вертикальна карточка
 const Card = styled.section`
@@ -99,19 +102,19 @@ export default function ContentCard(props) {
             <Divider />
             <Grid>
                 <C>
-                    <Icon color='black' size={20} src='./icon-money.png' />
+                    <AttachMoneyRoundedIcon/>
                     <P>{props.price} грн</P>
                 </C>
                 <C>
-                    <Icon color='black' size={20} src='./icon-calendar.png' />
+                    <CalendarMonthRoundedIcon/>
                     <P>{props.date}</P>
                 </C>
                 <C>
-                    <Icon color='black' size={20} src='./icon-time.png' />
+                    <AccessTimeFilledRoundedIcon/>
                     <P>{props.duration + (props.duration === 1 ? " день" : props.duration === 2 ? " дні" : " днів")}</P>
                 </C>
                 <C>
-                    <Icon color='black' size={20} src='./icon-map.png' />
+                    <MapRoundedIcon/>
                     <P>{props.place}</P>
                 </C>
             </Grid>

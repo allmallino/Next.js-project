@@ -15,6 +15,8 @@ const LoginWithGoogleButton = dynamic(() => import("./LoginWithGoogleButton"));
 //Текст, що відтворюватиме дію при натисканні
 const P = styled.p`
     padding: 15px 25px;
+    min-width:100px;
+    text-align:center;
     border-left: 1px solid black;
     text-decoration: none;
     color: black;

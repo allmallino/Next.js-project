@@ -1,7 +1,7 @@
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-
+import GoogleIcon from '@mui/icons-material/Google';
 
 const theme = createTheme({
     palette: {
@@ -23,7 +23,7 @@ export default function LoginWithGoogleButton(props) {
     if (loading) {
         return (
         <ThemeProvider theme={theme}>
-            <Button variant="contained" disabled onClick={() => { signInWithGoogle() }}>
+            <Button variant="contained" disabled onClick={() => { signInWithGoogle() }} startIcon={<GoogleIcon/>}>
                 Увійти через Google
             </Button>
         </ThemeProvider>);
@@ -31,7 +31,7 @@ export default function LoginWithGoogleButton(props) {
 
     return (
         <ThemeProvider theme={theme}>
-            <Button variant="contained" onClick={() => { signInWithGoogle() }}>
+            <Button variant="contained" onClick={() => { signInWithGoogle() }} startIcon={<GoogleIcon/>}>
                 Увійти через Google
             </Button>
         </ThemeProvider>);
