@@ -4,8 +4,7 @@ import { useWindowScroll } from "react-use";
 import { css, styled } from "styled-components";
 import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
 import IconButton from '@mui/material/IconButton';
-
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 
 
 const theme = createTheme({
@@ -44,11 +43,14 @@ const C = styled(IconButton)`
 export default function ButtonToUp() {
     const { x, y } = useWindowScroll();
 
-    return <ThemeProvider theme={theme}>
-        <C onClick={() => { window.scrollTo(0, 0); }} hidden={y >= 1 ? false : true} aria-label="up" sx={{ fontSize: 40 }} size="large">
-            <ArrowUpwardRoundedIcon color="primary" fontSize="inherit"/>
-        </C>
-    </ThemeProvider>
+    return <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+            <C onClick={() => { window.scrollTo(0, 0); }} hidden={y >= 1 ? false : true} aria-label="up" sx={{ fontSize: 40 }} size="large">
+                <ArrowUpwardRoundedIcon color="primary" fontSize="inherit"/>
+            </C>
+        </ThemeProvider>
+    </StyledEngineProvider>
+    
     
 
 }

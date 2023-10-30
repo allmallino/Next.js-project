@@ -2,6 +2,7 @@
 import { css, styled } from "styled-components";
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import IconButton from "@mui/material/IconButton/IconButton";
+import { StyledEngineProvider } from "@mui/material";
 interface Props{
     variant:string
 } 
@@ -37,8 +38,10 @@ const Button = styled(IconButton)<Props>`
 
 export default function ScrollerButton(props) {
     return (
-        <Button variant={props.variant} aria-label={props.variant} onClick={props.onClick}>
-            <ArrowForwardRoundedIcon fontSize="inherit" color="inherit"/>
-        </Button>
+        <StyledEngineProvider injectFirst>
+            <Button variant={props.variant} aria-label={props.variant} onClick={props.onClick}>
+                <ArrowForwardRoundedIcon fontSize="inherit" color="inherit"/>
+            </Button>
+        </StyledEngineProvider>
     );
 }
