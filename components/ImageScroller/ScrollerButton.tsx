@@ -31,8 +31,9 @@ const Button = styled(IconButton)<Props>`
     }
 
     @media screen and (max-width:768px) {
-        width:20px;
-        height:20px;
+        width:30px;
+        height:30px;
+        font-size:15px;
     }
 `;
 

@@ -1,41 +1,10 @@
 import { useRef, useState } from "react";
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Heading from "../Heading";
-import { css, styled } from 'styled-components';
 import LoadingGif from "../LoadingGif";
 import ButtonLink from "../ButtonLink";
+import { TextField } from "@mui/material";
 
-interface Props{
-    invalid:string
-}
-
-//Місце вводу пошти і пароля для реєстрації
-const Input = styled.input<Props>`
-    width:100%;
-    height:35px;
-    border-radius: 4px;
-    margin-bottom:0;
-    ${(props => {
-        if (props.invalid === "true") {
-            return css`
-                border: 2px solid red;
-            `;
-        } else {
-            return css`
-                border: 2px solid black;
-            `;
-        }
-    })
-    };
-    box-sizing: border-box;
-    text-align: center;
-`;
-
-const ErrorLable = styled.label`
-    font-size:0.75rem;
-    color:red;
-    margin:0;
-`;
 
 export default function RegisterWindow(props) {
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(props.auth);
@@ -70,7 +39,7 @@ export default function RegisterWindow(props) {
                 break;
             case "auth/invalid-email":
                 if (registerState.emailMessage !== "Ви ввели не правильну пошту")
-                    changeState({ email: true, password: false, emailMessage: "Ви ввели не правильну пошту", passwordMessage: "" });
+                    changeState({ email: true, password: false, emailMessage: "Ви ввели неправильну пошту", passwordMessage: "" });
                 break;
             case "auth/weak-password":
                 if (registerState.passwordMessage !== "Пароль повинен бути від 6 до 16")
@@ -83,14 +52,10 @@ export default function RegisterWindow(props) {
         <>
             <Heading variant="3">Реєстрація</Heading>
             <div>
-                <label>Пошта</label>
-                <Input ref={email} invalid={registerState.email.toString()} type="email" autoComplete={"false"} />
-                <ErrorLable>{registerState.emailMessage}</ErrorLable>
+                <TextField inputRef={email} label="Пошта" fullWidth helperText={registerState.emailMessage} error={registerState.email} type="email" autoComplete={"false"} />
             </div>
             <div>
-                <label>Пароль</label>
-                <Input ref={password} invalid={registerState.password.toString()} type="password" maxLength={16} />
-                <ErrorLable>{registerState.passwordMessage}</ErrorLable>
+                <TextField inputRef={password} label="Пароль" helperText={registerState.passwordMessage} fullWidth error={registerState.password} type="password" inputProps={{ maxLength: 16 }} />
             </div>
             <ButtonLink onClick={register}>Зареєструватися</ButtonLink>
             {props.children}

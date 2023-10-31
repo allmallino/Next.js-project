@@ -10,7 +10,7 @@ import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material/
 const theme = createTheme({
     palette: {
         primary: {
-          main: '#000000',
+          main: '#333333',
           light: '#414040',
           contrastText: '#FFFFFF',
         },

@@ -4,7 +4,6 @@
 
 body{
     margin: 0;
-    
 }
 
 .container{
@@ -14,7 +13,7 @@ body{
 
 .footer{
     background-color:#E5E5E5;
-    padding:10px 15px;
+    padding:20px 15px;
     box-sizing:border-box;
     display:flex;
     justify-content:center;

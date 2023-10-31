@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { User, getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import dynamic from "next/dynamic"
@@ -15,7 +15,8 @@ const LoginWithGoogleButton = dynamic(() => import("./LoginWithGoogleButton"));
 //Текст, що відтворюватиме дію при натисканні
 const P = styled.p`
     padding: 15px 25px;
-    min-width:100px;
+    width:150px;
+    text-overflow: ellipsis;
     text-align:center;
     border-left: 1px solid black;
     text-decoration: none;
@@ -30,6 +31,7 @@ const P = styled.p`
     
     @media screen and (max-width:768px) {
         padding: 15px 15px;
+        width:100px;
     }
 `;
 
@@ -42,9 +44,9 @@ const Container = styled.div`
     border-radius:5px;
     display:grid;
     position:relative;
-    grid-template-rows: 1.5fr 1fr 1fr 0.8fr 0.5fr 0.8fr;
+    grid-template-rows: 1.5fr 80px 80px 1fr 0.5fr 1fr;
     padding:20px 15px;
-    row-gap:25px;
+    row-gap:15px;
     box-shadow: 5px 5px 15px black;
 
     @media screen and (max-height:500px) {
@@ -85,7 +87,7 @@ export default function NavAuthButton() {
     const [previousUser, loading, error] = useAuthState(auth);
     const [loginState, setState] = useState(true);
     const [user, setUser] = useState<User>();
-
+    
     //Створюємо лист замовлень, в який ми будемо додавати нові тури, які забронював користувач
     async function createList() {
         let state = (await getDoc(doc(getFirestore(firebase_app), "users", user['uid']))).data();
@@ -101,7 +103,7 @@ export default function NavAuthButton() {
     }
 
     if (error) {
-        console.log(error.message);
+        console.error(error.message);
     }
 
     if (!user && previousUser) {
@@ -137,7 +139,7 @@ export default function NavAuthButton() {
         createList();
         return (
             <Popup trigger={<P>{user['displayName']?user['displayName']:user['email'].substring(0, user['email'].indexOf("@"))}</P>} position={"bottom center"} on="hover" closeOnDocumentClick mouseLeaveDelay={300} mouseEnterDelay={0} arrow={false}>
-                <UserInteractionWindow selectUser={setUser} auth={auth} />
+                <UserInteractionWindow selectUser={setUser} auth={auth}/>
             </Popup>
         );
     }

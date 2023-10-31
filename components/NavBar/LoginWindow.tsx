@@ -1,41 +1,9 @@
 import { useRef, useState } from "react";
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Heading from "../Heading";
-import { css, styled } from 'styled-components';
 import LoadingGif from "../LoadingGif";
 import ButtonLink from "../ButtonLink";
-
-interface Props{
-    invalid:string
-}
-
-//Місце вводу пошти і пароля для авторизації
-const Input = styled.input<Props>`
-    width:100%;
-    height:35px;
-    border-radius: 4px;
-    margin-bottom:0;
-    ${(props => {
-        if (props.invalid === "true") {
-            return css`
-                border: 2px solid red;
-            `;
-        } else {
-            return css`
-                border: 2px solid black;
-            `;
-        }
-    })
-    };
-    box-sizing:border-box;
-    text-align:center;
-`;
-
-const ErrorLable = styled.label`
-    font-size:0.75rem;
-    color:red;
-    margin:0;
-`;
+import { TextField } from "@mui/material";
 
 export default function LoginWindow(props) {
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(props.auth);
@@ -72,8 +40,8 @@ export default function LoginWindow(props) {
                     changeState({ email: true, password: false, emailMessage: "Користувача з такою поштою не існує", passwordMessage: "" });
                 break;
             case "auth/wrong-password":
-                if (loginState.passwordMessage !== "Ви ввели не правильний пароль")
-                    changeState({ email: false, password: true, emailMessage: "", passwordMessage: "Ви ввели не правильний пароль" });
+                if (loginState.passwordMessage !== "Ви ввели неправильний пароль")
+                    changeState({email: false, password: true, emailMessage: "", passwordMessage: "Ви ввели не правильний пароль" });
                 break;
         }
     }
@@ -81,14 +49,10 @@ export default function LoginWindow(props) {
         <>
             <Heading variant="3">Логін</Heading>
             <div>
-                <label>Пошта</label>
-                <Input ref={email} invalid={loginState.email.toString()} type="email" autoComplete={"true"} />
-                <ErrorLable>{loginState.emailMessage}</ErrorLable>
+                <TextField inputRef={email} label="Пошта" fullWidth helperText={loginState.emailMessage} error={loginState.email} type="email" autoComplete={"false"} />
             </div>
             <div>
-                <label>Пароль</label>
-                <Input ref={password} invalid={loginState.password.toString()} type="password" maxLength={16} />
-                <ErrorLable>{loginState.passwordMessage}</ErrorLable>
+                <TextField inputRef={password} label="Пароль" helperText={loginState.passwordMessage} fullWidth error={loginState.password} type="password" inputProps={{ maxLength: 16 }}/>
             </div>
             <ButtonLink onClick={login}>Увійти</ButtonLink>
             {props.children}

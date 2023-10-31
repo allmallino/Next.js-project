@@ -1,15 +1,12 @@
+import { MenuItem, TextField } from "@mui/material";
 import { css, styled } from "styled-components"
 
 interface Props{
     name:string
 }
 
-const Select = styled.select`
+const Select = styled(TextField)`
         height:35px;
-        border-radius: 4px;
-        border: 2px solid black;
-        width:100%;
-        background-color:white;
         font-size:1rem;
     `;
 
@@ -21,9 +18,8 @@ export default function SelectInput(props) {
 
     return (
         <Div name={props.name}>
-            <label>{props.title}</label>
-            <Select onChange={props.onChange} value={props.value} title={props.title}>
-                {props.options.map((v, i) => (<option value={i} key={i}>{v}</option>))}
+            <Select onChange={props.onChange} aria-valuenow={props.value} label={props.title}  id={props.name} select fullWidth defaultValue = "">
+                {props.options.map((v, i) => (<MenuItem value={i+''} key={i}>{v}</MenuItem>))}
             </Select>
         </Div>
     )

@@ -11,21 +11,28 @@ const L = styled(Link)<Props>`
     text-decoration: none;
     color: black;
     transition: all 0.5s;
+    position: relative;
+
+    &:hover{
+        background-color: #b2b2b2;
+    }
 
     ${(props => {
         if(props.variant==="active"){
             return css`
-            cursor:default;
-            background-color: #a9a9a9;
+                &::after{
+                    position: absolute;
+                    content: '';
+                    height: 2px;
+                    bottom: 0px;
+                    margin: 0 auto;
+                    left: 0;
+                    right: 0;
+                    width: 50%;
+                    background: black; 
+                }
             `;
-        }else{
-            return css`
-            &:hover{
-                background-color: #b2b2b2;
-            }
-            `;
-        }
-        })}
+        }})}
 
     @media screen and (max-width:768px) {
         padding: 15px 15px;

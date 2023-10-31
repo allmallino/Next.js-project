@@ -74,6 +74,7 @@ const C = styled.div`
         align-items: center;
         gap:10px;
         grid-template-columns:auto 2fr;
+        color:#333333;
     `;
 
 const Head = styled.p`

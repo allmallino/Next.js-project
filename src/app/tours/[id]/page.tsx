@@ -46,6 +46,6 @@ export default function Page({ params }) {
             <CommentSection tour={params.id} />
         </>
     }else if(!tourLoading){
-        return <NotFoundMessage text='Назад' link='/tours'/>
+        return <NotFoundMessage text='До таблиці наявних турів' link='/tours'/>
     }
 }

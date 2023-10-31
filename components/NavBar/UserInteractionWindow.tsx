@@ -1,9 +1,10 @@
-import { styled } from "styled-components";
+import { styled, css } from "styled-components";
 import { useSignOut } from 'react-firebase-hooks/auth';
 import Link from "next/link";
 
 const P = styled.p`
     padding: 15px 25px;
+    margin:5px 0 0 0 ;
     color: black;
     transition: all 0.5s;
     cursor: pointer;
@@ -31,24 +32,28 @@ const L = styled(Link)`
 const SubMenu = styled.div`
     display:flex;
     flex-direction:column;
-    right:1vw;
+    right:5px;
     top:60px;
     text-align:center;  
     background-color:#E5E5E5;
     position:fixed;
     z-index: 999;
+    width:200px;
 
     @media screen and (max-width:768px) {
         top:50px;
+        width:130px;
     }
 `;
 
 export default function UserInteractionWindow(props) {
     const [signOut, loading, error] = useSignOut(props.auth);
 
+
     if (error) {
-        console.log(error.message);
+        console.log(props.width);
     }
+
 
     return (
         <SubMenu>

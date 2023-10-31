@@ -2,6 +2,7 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import GoogleIcon from '@mui/icons-material/Google';
+import { LoadingButton } from "@mui/lab";
 
 const theme = createTheme({
     palette: {
@@ -23,15 +24,15 @@ export default function LoginWithGoogleButton(props) {
     if (loading) {
         return (
         <ThemeProvider theme={theme}>
-            <Button variant="contained" disabled onClick={() => { signInWithGoogle() }} startIcon={<GoogleIcon/>}>
+            <LoadingButton variant="contained" loading sx={{ textTransform: 'capitalize'}}>
                 Увійти через Google
-            </Button>
+            </LoadingButton>
         </ThemeProvider>);
     }
 
     return (
         <ThemeProvider theme={theme}>
-            <Button variant="contained" onClick={() => { signInWithGoogle() }} startIcon={<GoogleIcon/>}>
+            <Button variant="contained" onClick={() => { signInWithGoogle() }} startIcon={<GoogleIcon/>} sx={{ textTransform: 'capitalize'}}>
                 Увійти через Google
             </Button>
         </ThemeProvider>);
