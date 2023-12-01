@@ -64,18 +64,16 @@ const CardInfo = styled(Card)`
 
         @media screen and (max-width:500px) {
 
-        }
+            @media not all and (hover: hover){
+                &.right{
+                    transform: translate(30%, 5%) rotate(3deg);
+                }
 
-
-        
-        @media not all and (hover: hover){
-            &.right{
-                transform: translate(30%, 5%) rotate(3deg);
+                &.left{
+                    transform: translate(-30%, 5%) rotate(-3deg);
+                }
             }
 
-            &.left{
-                transform: translate(-30%, 5%) rotate(-3deg);
-            }
         }
 
     `;
@@ -173,7 +171,7 @@ export default function ContentCard(props) {
             <CardInfo elevation={3} className="right">
                 <C>
                     <AccessTimeFilledRoundedIcon/>
-                    <P>{props.duration + (props.duration === 1 ? " день" : props.duration === 2 ? " дні" : " днів")}</P>
+                    <P>{props.duration + (props.duration === 1 ? " день" : props.duration === 2 || props.duration === 3? " дні" : " днів")}</P>
                 </C>
                 <C>
                     <MapRoundedIcon/>
