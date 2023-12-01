@@ -27,7 +27,7 @@ const Container = styled.div<Props>`
             case "vertical":
                 return css`
                     min-width: 100%;
-                    height: 50%;
+                    aspect-ratio:1/1;
                 `;
         }
     }

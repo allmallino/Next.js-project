@@ -23,16 +23,16 @@ const ListOfPages = styled.div`
 
 //Контейнер в якому буде знаходитися сам скроллер
 const Container = styled.div`
-    margin-top:0;
-    margin-bottom:25px;
-    border-radius:5px;
+    margin: 0 -2.5vw 25px -2.5vw;
     overflow:hidden;
     height:calc(100dvh - 60px);
     min-height:500px;
     position:relative;
+    
 
     @media screen and (max-width:768px) {
         height:65dvw;
+        margin: 0 0 25px 0;
     }
 `;
 

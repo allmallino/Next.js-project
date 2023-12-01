@@ -1,26 +1,24 @@
 import { styled } from "styled-components";
 
 //Контейнер, в якому буде знаходитися назва туру
-const Container = styled.div`
+const Container = styled.p`
     position:relative;
-    display:block;
-    z-index:2;
-    margin:-25px auto 0 auto;
-    padding:10px 5px;
+    display:inline;
+    padding:10px 0;
+    top:16px;
+    margin-bottom:16px;
     width:max-content;
-    border-radius:5px;
-    text-align:center;
-    background-color:#E5E5E5;
     color:black;
-    font-size:1.5rem;
+    font-size:2rem;
     font-weight:600;
 `
 
 //Розташування туру, яке буде знаходитися під назвою
 const Locate = styled.i`
     display:block;
-    text-align:center;
-    margin:0 auto;
+    position:relative;
+    top:16px;
+    margin-bottom:36px;
 `
 export default function ContentTitle(props) {
 

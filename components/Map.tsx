@@ -32,7 +32,7 @@ export default function Map(props) {
 
     }
 
-    return <MapContainer style={{ height: props.height, width: props.width }} center={[props.coordinates[0]._lat, props.coordinates[0]._long]} zoom={20} minZoom={15} scrollWheelZoom={true}>
+    return <MapContainer style={{ height: props.height, width: props.width }} center={[props.coordinates[0]._lat, props.coordinates[0]._long]} zoom={20} minZoom={15} scrollWheelZoom={false}>
         <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

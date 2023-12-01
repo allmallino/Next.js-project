@@ -24,7 +24,7 @@ const S = styled.section`
     justify-content: space-around;
     margin: 0 auto;
     width: 75%;
-    padding: 0 0 25px 0;
+    padding: 0 0 50px 0;
     
     @media screen and (max-width:1400px) {
         width: max-content;
@@ -34,12 +34,13 @@ const S = styled.section`
     
     @media screen and (max-width:768px) {
         flex-wrap:wrap;
-        width: 100%;
+        width: 75%;
     }
 
     @media screen and (max-width:500px) {
         padding: 10px auto;
         width: max-content;
+        gap: 35px;
         flex-direction: column;
     }
 `;

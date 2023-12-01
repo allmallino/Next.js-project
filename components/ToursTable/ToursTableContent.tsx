@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 import dynamic from "next/dynamic";
+import { Pagination, PaginationItem } from "@mui/material";
 
 const PageButton = dynamic(() => import("./PageButton"));
 const ContentCard = dynamic(() => import("../ContentCard/ContentCard"));
@@ -10,7 +11,7 @@ const Section = styled.section`
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
     place-items: center;
-    gap:25px; 
+    row-gap:50px; 
     margin: 10px auto;
     width: 75%;
 
@@ -19,24 +20,25 @@ const Section = styled.section`
     }
 
     @media screen and (max-width:768px) {
-        width: 100%;
-        gap:10px;
+        width:75%;
+        gap:15px;
+        row-gap:35px; 
         grid-template-columns:1fr 1fr;
+        place-items: center;
     }
     @media screen and (max-width:500px) {
-            width: 100%;
-            gap:10px;
-            grid-template-columns:1fr;
+        width: 100%;
+        gap:10px;
+        grid-template-columns:1fr;
     }
 `;
 
 //Контейнер в якому будуть знаходитися кнопки перемикання сторінок
 const PagesContainer = styled.div`
     display:flex;
-    align-items:center;
     justify-content:center;
-    gap:5px;
-    margin:15px auto 0 auto;
+    align-items:center;
+    margin:35px auto 0 auto;
 `;
 
 //Стилізація повідомлення про помилку
@@ -67,7 +69,7 @@ export default function ToursTableContent(props) {
                 {ourTours}
             </Section>
             <PagesContainer>
-                {pages}
+                <Pagination count={Math.ceil(props.tours.length / 9)} size="large" shape="rounded" onChange={(event: React.ChangeEvent<unknown>, value: number) => {changeIndex(value-1);}}/>
             </PagesContainer>
         </>;
     } else if (props.tours.length >= 1) {

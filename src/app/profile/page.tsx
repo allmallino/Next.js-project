@@ -9,7 +9,6 @@ import CartList from "../../../components/Profile/CartList";
 const auth = getAuth(firebase_app);
 export default function Home() {
     const [user, userLoading, error] = useAuthState(auth);
-
     if (user) {
         return <>
             <ProfileInformation user={user} auth={auth} />
