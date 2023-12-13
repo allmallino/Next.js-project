@@ -1,15 +1,15 @@
-import { useRef, useState, useEffect } from "react";
+import {useState} from "react";
 import { User, getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import dynamic from "next/dynamic"
 import { styled } from "styled-components";
 import firebase_app from '@/firebase/config';
 import { doc, getFirestore, setDoc, getDoc } from "firebase/firestore";
+import ProfileBtn from "./ProfileBtn";
 
 const Popup = dynamic(() => import("reactjs-popup"));
 const LoginWindow = dynamic(() => import("./LoginWindow"));
 const RegisterWindow = dynamic(() => import("./RegisterWindow"));
-const UserInteractionWindow = dynamic(() => import("./UserInteractionWindow"));
 const LoginWithGoogleButton = dynamic(() => import("./LoginWithGoogleButton"));
 
 //Текст, що відтворюватиме дію при натисканні
@@ -18,11 +18,11 @@ const P = styled.p`
     width:150px;
     text-overflow: ellipsis;
     text-align:center;
-    border-left: 1px solid black;
     text-decoration: none;
     color: black;
     transition: all 0.5s;
     cursor: pointer;
+    border-radius: 5px;
 
     &:hover{
         background-color: #b2b2b2;
@@ -138,9 +138,7 @@ export default function NavAuthButton() {
         //Якщо ми змогли підтягнути дані користувача, ми його авторизуємо і даємо можливість подивитися його профіль, або вийти з акаунту
         createList();
         return (
-            <Popup trigger={<P>{user['displayName']?user['displayName']:user['email'].substring(0, user['email'].indexOf("@"))}</P>} position={"bottom center"} on="hover" closeOnDocumentClick mouseLeaveDelay={300} mouseEnterDelay={0} arrow={false}>
-                <UserInteractionWindow selectUser={setUser} auth={auth}/>
-            </Popup>
+            <ProfileBtn photoURL={user['photoURL']} name={user['displayName']?user['displayName']:user['email'].substring(0, user['email'].indexOf("@"))} selectUser={setUser}  auth={auth} />
         );
     }
 }

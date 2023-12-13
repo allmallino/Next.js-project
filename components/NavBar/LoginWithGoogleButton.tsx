@@ -14,7 +14,7 @@ const theme = createTheme({
         },
       },
       typography:{
-        fontFamily:'__Inter_a64ecd, __Inter_Fallback_a64ecd'
+        fontFamily:'__Inter_e66fe9'
       }
 })
 

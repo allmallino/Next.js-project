@@ -7,11 +7,11 @@ interface Props{
 //Посилання на іншу сторінку, стилізована під кнопку в панелі
 const L = styled(Link)<Props>`
     padding: 15px 25px;
-    border-right: 1px solid black;
     text-decoration: none;
     color: black;
     transition: all 0.5s;
     position: relative;
+    border-radius: 5px;
 
     &:hover{
         background-color: #b2b2b2;
